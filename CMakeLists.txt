@@ -8,7 +8,7 @@ find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 
 set(SOURCE_FILE 
-  src/1-triangle/1.1-triangulo.cpp)
+  src/1-getting-started/1.1-hello-window.cpp)
 
 set(SOURCES
   src/glad.c
