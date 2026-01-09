@@ -11,7 +11,7 @@ find_package(glfw3 REQUIRED)
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
 set(SOURCE_FILE 
-  src/1-getting-started/2-hello-triangle/2.3-theCherno/res/2.1-hello-triangle-red.cpp)
+  src/1-getting-started/2-hello-triangle/2.3-theCherno/res/2.1-hello-triangle-red-errors.cpp)
 
 
 set(SOURCES
