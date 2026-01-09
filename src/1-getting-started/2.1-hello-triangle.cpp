@@ -86,7 +86,7 @@ int main()
   glGenBuffers(1, &VBO);      // VBO: stores the actual vertex data on the GPU
 
   // ----------- VAO/VBO SETUP (done once) -------------
-  glBindVertexArray(VAO); // Bind VAO so all settings below get recorded into it
+  glBindVertexArray(VAO); //! Bind VAO so all settings below get recorded into it
 
   glBindBuffer(GL_ARRAY_BUFFER, VBO); // Bind VBO so we can copy data to it
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -103,7 +103,7 @@ int main()
   // Unbind VAO so we don't accidentally modify it later
   glBindVertexArray(0);
 
-    // ======================= MAIN LOOP =======================
+  // ======================= MAIN LOOP =======================
 
   while (!glfwWindowShouldClose(window))
   {
@@ -113,7 +113,7 @@ int main()
 
     // ----------- DRAWING PHASE (every frame) -------------
     glUseProgram(shaderProgram);      // Activate shader program
-    glBindVertexArray(VAO);           // Bind VAO so GPU knows where and how the vertex data is defined
+    glBindVertexArray(VAO);           //! Bind VAO so GPU knows where and how the vertex data is defined
     glDrawArrays(GL_TRIANGLES, 0, 3); // Draw 3 vertices as one triangle
 
     // Swap frame buffers and handle input/events

@@ -7,11 +7,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 
-set(SOURCE_FILE 
-  src/1-getting-started/1.4-hello-triangles-colors.cpp)
-
 # set(SOURCE_FILE 
-#   src/test.cpp)
+#   src/1-getting-started/2.3-hello-triangles-colors.cpp)
+
+set(SOURCE_FILE 
+  src/2.3-theCherno/res/2.1-hello-triangle-red.cpp)
 
 
 set(SOURCES

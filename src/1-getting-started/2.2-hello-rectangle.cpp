@@ -98,16 +98,16 @@ int main()
 
   glGenBuffers(1, &EBO); // EBO (Element Buffer Object) stores index data so vertices can be reused
 
-  // Bind VAO so all subsequent VBO/EBO state gets stored inside it
+  //! Bind VAO so all subsequent VBO/EBO state gets stored inside it
   glBindVertexArray(VAO);
 
   // Bind VBO and upload vertex array into GPU memory
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);                                        // Bind VBO as active array buffer
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW); // Upload vertex data to GPU
 
   // Bind EBO and upload triangle index data
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);                                      // Bind EBO (this stays stored in the VAO!)
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW); // Upload index data
 
   // Tell OpenGL how to interpret vertex data inside VBO:
   // index=0 → location of 'aPos'
@@ -117,6 +117,7 @@ int main()
   // offset = 0
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
+  // NOTE: ^ Both of these ARE remembered by the VAO, along with which VBO was bound now
 
   // Optional safety unbinds (EBO stays bound to VAO!)
   glBindBuffer(GL_ARRAY_BUFFER, 0);
