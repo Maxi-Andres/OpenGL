@@ -11,7 +11,7 @@ const char *vertexShaderSource =
     "void main()\n"
     "{\n"
     "   // Pass vertex position to clip space (NDC conversion happens later)\n"
-    "   gl_Position = vec4(aPos, 1.0);\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
 
 // Fragment Shader source (runs once per pixel)

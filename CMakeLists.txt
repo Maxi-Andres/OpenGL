@@ -8,7 +8,7 @@ find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 
 set(SOURCE_FILE 
-  src/1-getting-started/1.3-hello-rectangle.cpp)
+  src/1-getting-started/1.4-hello-triangles-colors.cpp)
 
 # set(SOURCE_FILE 
 #   src/test.cpp)

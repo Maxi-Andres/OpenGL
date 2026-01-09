@@ -10,7 +10,7 @@ const char *vertexShaderSource =
     "layout (location = 0) in vec3 aPos;\n"
     "void main()\n"
     "{\n"
-    "   gl_Position = vec4(aPos, 1.0);\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
 
 // Fragment Shader source (sets the pixel color)
@@ -82,22 +82,28 @@ int main()
 
   GLuint VAO, VBO;
 
-  glGenVertexArrays(1, &VAO); // VAO stores the vertex attribute configuration
-  glGenBuffers(1, &VBO);      // VBO stores the actual vertex data on the GPU
+  glGenVertexArrays(1, &VAO); // VAO: stores HOW to read the vertex data
+  glGenBuffers(1, &VBO);      // VBO: stores the actual vertex data on the GPU
 
-  glBindVertexArray(VAO);
+  // ----------- VAO/VBO SETUP (done once) -------------
+  glBindVertexArray(VAO); // Bind VAO so all settings below get recorded into it
 
-  glBindBuffer(GL_ARRAY_BUFFER, VBO); // Bind VBO to copy data into it
+  glBindBuffer(GL_ARRAY_BUFFER, VBO); // Bind VBO so we can copy data to it
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  // Upload CPU vertex data into GPU memory
 
-  // Describe how OpenGL should read the VBO data
+  // Tell OpenGL how to interpret vertex data stored in VBO:
+  // location 0 → vec3 → floats → tightly packed → offset 0
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(0); // Enable the vertex attribute at location 0
 
+  // Unbind VBO (optional safety)
   glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glBindVertexArray(0); // Unbind VAO for safety
 
-  // ======================= MAIN LOOP =======================
+  // Unbind VAO so we don't accidentally modify it later
+  glBindVertexArray(0);
+
+    // ======================= MAIN LOOP =======================
 
   while (!glfwWindowShouldClose(window))
   {
@@ -105,10 +111,10 @@ int main()
     glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Use shaders and draw triangle
-    glUseProgram(shaderProgram);
-    glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    // ----------- DRAWING PHASE (every frame) -------------
+    glUseProgram(shaderProgram);      // Activate shader program
+    glBindVertexArray(VAO);           // Bind VAO so GPU knows where and how the vertex data is defined
+    glDrawArrays(GL_TRIANGLES, 0, 3); // Draw 3 vertices as one triangle
 
     // Swap frame buffers and handle input/events
     glfwSwapBuffers(window);

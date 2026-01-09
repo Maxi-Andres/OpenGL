@@ -348,7 +348,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\1.3-hello-rectangle.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\1.4-hello-triangles-colors.cpp" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\glad.c" />
   </ItemGroup>
   <ItemGroup />

@@ -50,7 +50,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "OpenGL-learn::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OpenGL-learn-Debug-8bb4e5ebd0fb0049b6bd.json",
+					"jsonFile" : "target-OpenGL-learn-Debug-e79a5ffa4299da55f2ee.json",
 					"name" : "OpenGL-learn",
 					"projectIndex" : 0
 				},
@@ -112,7 +112,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "OpenGL-learn::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OpenGL-learn-Release-4beeb93243dfc1bc0e7d.json",
+					"jsonFile" : "target-OpenGL-learn-Release-9d55108340b7b0ee75fc.json",
 					"name" : "OpenGL-learn",
 					"projectIndex" : 0
 				},
@@ -174,7 +174,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "OpenGL-learn::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OpenGL-learn-MinSizeRel-a87fc8310c5d15905b9e.json",
+					"jsonFile" : "target-OpenGL-learn-MinSizeRel-d4e16e1d92d249615da4.json",
 					"name" : "OpenGL-learn",
 					"projectIndex" : 0
 				},
@@ -236,7 +236,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "OpenGL-learn::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-OpenGL-learn-RelWithDebInfo-42f862127d327351fdf1.json",
+					"jsonFile" : "target-OpenGL-learn-RelWithDebInfo-18f4e1cfcd93674c2c54.json",
 					"name" : "OpenGL-learn",
 					"projectIndex" : 0
 				},
