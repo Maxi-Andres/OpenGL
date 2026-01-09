@@ -84,7 +84,7 @@ int main()
 
   // ShaderProgramSource source = ParseShader("src/2.3-theCherno/res/shaders/Basic.shaders");
   ShaderProgramSource source =
-      ParseShader("../../src/2.3-theCherno/res/shaders/Basic.shaders");
+      ParseShader("../../src/1-getting-started/2-hello-triangle/2.3-theCherno/res/shaders/Basic.shaders");
 
   const char *vertexShaderSource = source.VertexSource.c_str();
   const char *fragmentShaderSource = source.FragmentSource.c_str();
