@@ -11,7 +11,7 @@ find_package(glfw3 REQUIRED)
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
 set(SOURCE_FILE 
-  src/1-getting-started/3-shaders/3.1-cherno/res/3.1-uniforms.cpp)
+  src/1-getting-started/3-shaders/3.2-basic-shaders/3.1-interpolation.cpp)
 
 
 set(SOURCES
