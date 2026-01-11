@@ -142,10 +142,11 @@ int main()
   glGenBuffers(1, &EBO);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+  // No usamos arrays normales porque la GPU no puede leer RAM.Ponemos todo en buffers para que quede en VRAM y el pipeline lo use solo. por eso se hace esto
 
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-  //! el primer 0 de la firma de esta funcion significa que en el index 0 de este vertex array (VAO) esta bound a el currently bound GL array buffer
+  //! el primer 0 de la firma de esta funcion significa que en el index 0 de este vertex array (VAO) esta bound a el currently bound GL_ARRAY_BUFFER
   //! tambien si te das cuenta es el elemetn array porque usa float (por los vertices) y no unsited int como en indices
 
   // ======================= UNIFORM LOCATION =======================
@@ -173,6 +174,7 @@ int main()
 
     glBindVertexArray(VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    // probe a no bindear el GL_ELEMENT_ARRAY_BUFFER y funciona igual, esto es porque el VAO guarda info pero me parece qeu en ciertas situaciones puede romper
 
     GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
 
