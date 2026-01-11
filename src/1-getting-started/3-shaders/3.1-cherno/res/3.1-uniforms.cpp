@@ -6,6 +6,44 @@
 #include <string>
 #include <sstream>
 
+// ======================= esto es solo funcion para fps =======================
+
+#include <iomanip>
+
+float mDeltaTime = 0.0f;
+float mLastFrame = 0.0f;
+float mPreviousTime = 0.0f;
+int mFrameCount = 0;
+float mFPS = 0.0f;
+
+void updateTitle(GLFWwindow *window, const std::string &title);
+
+float getFPS()
+{
+  float currentFrame = glfwGetTime();
+  mDeltaTime = currentFrame - mLastFrame;
+  mLastFrame = currentFrame;
+  mFrameCount++;
+
+  if (currentFrame - mPreviousTime >= 1.0f)
+  {
+    mFPS = mFrameCount / (currentFrame - mPreviousTime);
+    mPreviousTime = currentFrame;
+    mFrameCount = 0;
+  }
+
+  return mFPS;
+}
+
+void updateTitle(GLFWwindow *window, const std::string &title)
+{
+  float fps = getFPS();
+  std::stringstream ss;
+  ss << title << " | FPS: " << std::fixed << std::setprecision(2) << fps;
+  std::string newTitle = ss.str();
+  glfwSetWindowTitle(window, newTitle.c_str());
+}
+
 // ======================= ERROR HANDLING =======================
 
 #define ASSERT(x) \
@@ -91,7 +129,7 @@ int main()
   }
   glfwMakeContextCurrent(window);
 
-  glfwSwapInterval(9); // VSync dependiento el int
+  glfwSwapInterval(0); // VSync dependiento el int
 
   // ======================= INIT GLAD =======================
   gladLoadGL();
@@ -163,11 +201,13 @@ int main()
 
   // ======================= RENDER LOOP =======================
   float r = 0.0f;
-  float increment = 0.05f;
+  float increment = 0.0005f;
 
   while (!glfwWindowShouldClose(window))
   {
     glClear(GL_COLOR_BUFFER_BIT);
+
+    updateTitle(window, "MyFirstWindow"); //* esto es solo funcion para fps
 
     GLCall(glUseProgram(shaderProgram));
     GLCall(glUniform4f(uLocation, r, 0.3f, 0.8f, 1.0f));
@@ -179,9 +219,9 @@ int main()
     GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
 
     if (r > 1.0f)
-      increment = -0.05f;
+      increment = -0.0005f;
     else if (r < 0.0f)
-      increment = 0.05f;
+      increment = 0.0005f;
 
     r += increment;
 
