@@ -11,7 +11,11 @@ find_package(glfw3 REQUIRED)
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
 set(SOURCE_FILE 
-  src/1-getting-started/3-shaders/3.3-interpolation-uniforms/3.3-interpolation-uniform.cpp)
+  src/1-getting-started/3-shaders/3.4-abstracting/Application.cpp
+  src/1-getting-started/3-shaders/3.4-abstracting/VertexBuffer.cpp
+  src/1-getting-started/3-shaders/3.4-abstracting/IndexBuffer.cpp
+  src/1-getting-started/3-shaders/3.4-abstracting/Renderer.cpp
+)
 
 
 set(SOURCES
@@ -24,8 +28,11 @@ add_executable(OpenGL-learn
 )
 
 
-target_include_directories(OpenGL-learn PRIVATE include lib shaders)
-
+target_include_directories(OpenGL-learn PRIVATE 
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib
+  ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+)
 target_link_libraries(OpenGL-learn ${GLFW3_LIBRARY} OpenGL::GL)
 
 # target_link_libraries(OpenGL-learn PRIVATE ${PROJECT_SOURCE_DIR}/lib/libglfw3.a)
