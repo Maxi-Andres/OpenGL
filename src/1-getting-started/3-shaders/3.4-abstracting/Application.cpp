@@ -10,8 +10,9 @@
 
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "VertexArray.h"
 
-// ======================= esto es solo funcion para fps =======================
+// ======================= FPS COUNTER FUNCTIONS =======================
 
 #include <iomanip>
 
@@ -57,9 +58,18 @@ struct ShaderProgramSource
   std::string FragmentSource;
 };
 
+// Parses a shader file containing both vertex and fragment shaders
+// Expects #shader vertex and #shader fragment directives to separate the two
 static ShaderProgramSource ParseShader(const std::string &filepath)
 {
   std::ifstream stream(filepath);
+
+  if (!stream.is_open())
+  {
+    std::cout << "[ERROR] Failed to open shader file at: "
+              << filepath << std::endl;
+    return {};
+  }
 
   enum class ShaderType
   {
@@ -90,10 +100,58 @@ static ShaderProgramSource ParseShader(const std::string &filepath)
   return {ss[0].str(), ss[1].str()};
 }
 
+// Compiles an individual shader (vertex or fragment) and checks for GLSL syntax errors
+static unsigned int CompileShader(unsigned int type, const std::string &source)
+{
+  GLCall(unsigned int id = glCreateShader(type));
+  const char *src = source.c_str();
+  GLCall(glShaderSource(id, 1, &src, nullptr));
+  GLCall(glCompileShader(id));
+
+  // Check for compilation errors
+  int result;
+  GLCall(glGetShaderiv(id, GL_COMPILE_STATUS, &result));
+  if (result == GL_FALSE)
+  {
+    int length;
+    GLCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
+    char *message = (char *)alloca(length * sizeof(char));
+    GLCall(glGetShaderInfoLog(id, length, &length, message));
+    std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
+    std::cout << message << std::endl;
+    GLCall(glDeleteShader(id));
+    return 0;
+  }
+
+  return id;
+}
+
+// Compiles both vertex and fragment shaders, links them into a GPU program, validates it, and cleans up individual shaders
+static unsigned int CreateShader(const std::string &vertexShader, const std::string &fragmentShader)
+{
+  GLCall(unsigned int program = glCreateProgram());
+  unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
+  unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+
+  GLCall(glAttachShader(program, vs));
+  GLCall(glAttachShader(program, fs));
+  GLCall(glLinkProgram(program));
+  GLCall(glValidateProgram(program));
+
+  // Delete individual shaders as they're now linked into the program
+  GLCall(glDeleteShader(vs));
+  GLCall(glDeleteShader(fs));
+
+  return program;
+}
+
 int main()
 {
   // ======================= INIT GLFW =======================
-  glfwInit();
+  if (!glfwInit())
+    return -1;
+
+  // Request OpenGL 3.3 Core Profile
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -105,98 +163,97 @@ int main()
     glfwTerminate();
     return -1;
   }
+  // Make the window's context current
   glfwMakeContextCurrent(window);
 
-  glfwSwapInterval(0); // VSync dependiento el int
+  glfwSwapInterval(0); // 0 = VSync off, 1 = VSync on
 
   // ======================= INIT GLAD =======================
-  gladLoadGL();
+  // Load all OpenGL function pointers through GLAD
+  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+  {
+    std::cout << "Failed to initialize GLAD" << std::endl;
+    return -1;
+  }
+
+  std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+
   glViewport(0, 0, 800, 800);
 
+  // Scope ensures proper destruction order of OpenGL objects before context is destroyed
   {
     // ======================= VERTEX DATA =======================
-
+    // Interleaved vertex data: position (x, y, z) + color (r, g, b)
     float vertices[] = {
-        -0.5f, 0.5f, 0.0f, 0.8f, 0.3f, 0.3f,
-        0.5f, 0.5f, 0.0f, 0.2f, 0.4f, 0.3f,
-        0.5f, -0.5f, 0.0f, 0.1f, 0.3f, 0.7f,
-        -0.5f, -0.5f, 0.0f, 0.2f, 0.8f, 0.1f};
+        -0.5f, 0.5f, 0.0f, 0.8f, 0.3f, 0.3f, // Top-left
+        0.5f, 0.5f, 0.0f, 0.2f, 0.4f, 0.3f,  // Top-right
+        0.5f, -0.5f, 0.0f, 0.1f, 0.3f, 0.7f, // Bottom-right
+        -0.5f, -0.5f, 0.0f, 0.2f, 0.8f, 0.1f // Bottom-left
+    };
 
+    // Index buffer for drawing two triangles (a quad)
     unsigned int indices[] = {
-        0, 1, 2,
-        0, 2, 3};
-
-    // ======================= SHADER SETUP =======================
-    ShaderProgramSource source = ParseShader("../../src/1-getting-started/3-shaders/3.4-abstracting/shaders/Shaders.shaders");
-    const char *vs = source.VertexSource.c_str();
-    const char *fs = source.FragmentSource.c_str();
-
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vs, NULL);
-    glCompileShader(vertexShader);
-
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fs, NULL);
-    glCompileShader(fragmentShader);
-
-    GLuint shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+        0, 1, 2, // First triangle
+        0, 2, 3  // Second triangle
+    };
 
     // ======================= VAO / VBO / EBO =======================
-    unsigned int VAO, VBO, EBO;
+    // unsigned int VAO, VBO, EBO;
+    // glGenVertexArrays(1, &VAO);
+    // glBindVertexArray(VAO);
 
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
-
+    VertexArray va;
     VertexBuffer vb(vertices, sizeof(vertices));
 
-    IndexBuffer ib(indices, 6);
-    // No usamos arrays normales porque la GPU no puede leer RAM.Ponemos todo en buffers para que quede en VRAM y el pipeline lo use solo. por eso se hace esto
+    // Define vertex layout: position (3 floats) + color (3 floats)
+    VertexBufferLayout layout;
+    layout.Push<float>(3); // Posición (x, y, z)
+    layout.Push<float>(3); // Color (r, g, b)
 
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0);
-    //! el primer 0 de la firma de esta funcion significa que en el index 0 de este vertex array (VAO) esta bound a el currently bound GL_ARRAY_BUFFER
-    //! tambien si te das cuenta es el elemetn array porque usa float (por los vertices) y no unsited int como en indices
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(3 * sizeof(float)));
-    // el stride es 6 porque son 6 floats antes de un nuevo vertice y este comienza en 3 porque son los 3 finales los colores
+    va.AddBuffer(vb, layout);
+
+    IndexBuffer ib(indices, 6);
+
+    // ======================= SHADER SETUP =======================
+
+    ShaderProgramSource source = ParseShader("../../src/1-getting-started/3-shaders/3.4-abstracting/shaders/Shaders.shaders");
+
+    unsigned int shaderProgram = CreateShader(source.VertexSource, source.FragmentSource);
+    GLCall(glUseProgram(shaderProgram));
 
     // ======================= UNIFORM LOCATION =======================
-    // Importante: glGetUniformLocation solo funciona si hay un shader program activo.
-    GLCall(glUseProgram(shaderProgram));
-    int uLocation = glGetUniformLocation(shaderProgram, "scale");
+    // Get uniform location (must be done after shader program is active)
+    GLCall(int uLocation = glGetUniformLocation(shaderProgram, "scale"));
     ASSERT(uLocation != -1);
 
-    //! siempre se desviendea todo como buena practica
-    glBindVertexArray(0);
-    glUseProgram(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    //! Unbind everything (good practice to avoid accidental modifications)
+    GLCall(glBindVertexArray(0));
+    GLCall(glUseProgram(0));
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 
     // ======================= RENDER LOOP =======================
+
     float r = 0.0f;
     float increment = 0.0005f;
 
     while (!glfwWindowShouldClose(window))
     {
-      glClear(GL_COLOR_BUFFER_BIT);
+      GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
-      updateTitle(window, "MyFirstWindow"); //* esto es solo funcion para fps
+      updateTitle(window, "MyFirstWindow"); //* This is only for the fps
 
+      // Activate shader and set uniform
       GLCall(glUseProgram(shaderProgram));
       GLCall(glUniform1f(uLocation, r));
 
-      glBindVertexArray(VAO);
+      // Bind VAO and index buffer, then draw
+      va.Bind();
       ib.Bind();
-      // probe a no bindear el GL_ELEMENT_ARRAY_BUFFER y funciona igual, esto es porque el VAO guarda info pero me parece qeu en ciertas situaciones puede romper
 
       GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
 
+      // Animate the uniform value
       if (r > 1.5f)
         increment = -0.0005f;
       else if (r < 0.0f)
@@ -209,13 +266,13 @@ int main()
     }
 
     // ======================= CLEANUP =======================
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
-    glDeleteProgram(shaderProgram);
+    // GLCall(glDeleteVertexArrays(1, &VAO));
+    // GLCall(glDeleteBuffers(1, &VBO));
+    // GLCall(glDeleteBuffers(1, &EBO));
+    GLCall(glDeleteProgram(shaderProgram));
   }
-  glfwDestroyWindow(window);
+  // glfwDestroyWindow(window);
   glfwTerminate();
 
-  return 0; // no tenia esto y funcionaba
+  return 0;
 }

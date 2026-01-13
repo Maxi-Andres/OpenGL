@@ -15,6 +15,7 @@ set(SOURCE_FILE
   src/1-getting-started/3-shaders/3.4-abstracting/VertexBuffer.cpp
   src/1-getting-started/3-shaders/3.4-abstracting/IndexBuffer.cpp
   src/1-getting-started/3-shaders/3.4-abstracting/Renderer.cpp
+  src/1-getting-started/3-shaders/3.4-abstracting/VertexArray.cpp
 )
 
 

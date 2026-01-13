@@ -1,3 +1,4 @@
+#pragma once
 #include <GLFW/glfw3.h>
 
 //! no deberia estar aca, pero por solo esto crear otro archivo
