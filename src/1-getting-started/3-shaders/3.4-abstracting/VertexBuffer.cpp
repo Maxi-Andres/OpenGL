@@ -10,7 +10,7 @@ VertexBuffer::VertexBuffer(const void *data, unsigned int size)
   GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
 }
 
-VertexBuffer::~VertexBuffer()
+VertexBuffer::~VertexBuffer() // this destructor is called when the object escapes the scope in the code
 {
   GLCall(glDeleteBuffers(1, &m_RendererID));
 }

@@ -23,7 +23,7 @@ struct VertexBufferElement
     }
     ASSERT(false);
     return 0;
-  }
+  } // If you're getting here, it's because you passed an unsupported GL type. Abort the program so you can fix it.
 };
 
 class VertexBufferLayout
@@ -31,6 +31,11 @@ class VertexBufferLayout
 private:
   std::vector<VertexBufferElement> m_Elements;
   unsigned int m_Stride;
+  // m_Elements = [
+  //     {type: GL_FLOAT, count: 3, normalized: false},  // Position
+  //     {type: GL_FLOAT, count: 3, normalized: false}   // Color
+  // ]
+  // m_Stride = 24 bytes  // 6 floats × 4 bytes
 
 public:
   VertexBufferLayout()

@@ -49,6 +49,26 @@ void updateTitle(GLFWwindow *window, const std::string &title)
   std::string newTitle = ss.str();
   glfwSetWindowTitle(window, newTitle.c_str());
 }
+//! ============================================================
+
+// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
+// ---------------------------------------------------------------------------------------------------------
+void processInput(GLFWwindow *window)
+{
+  if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    glfwSetWindowShouldClose(window, true);
+}
+
+// glfw: whenever the window size changed (by OS or user resize) this callback function executes
+// ---------------------------------------------------------------------------------------------
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
+  // make sure the viewport matches the new window dimensions; note that width and
+  // height will be significantly larger than specified on retina displays.
+  glViewport(0, 0, width, height);
+}
+
+//! ============================================================
 
 // ======================= SHADER PARSER =======================
 
@@ -167,6 +187,7 @@ int main()
   glfwMakeContextCurrent(window);
 
   glfwSwapInterval(0); // 0 = VSync off, 1 = VSync on
+  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
   // ======================= INIT GLAD =======================
   // Load all OpenGL function pointers through GLAD
@@ -178,9 +199,7 @@ int main()
 
   std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 
-  glViewport(0, 0, 800, 800);
-
-  // Scope ensures proper destruction order of OpenGL objects before context is destroyed
+  //! Scope ensures proper destruction order of OpenGL objects before context is destroyed
   {
     // ======================= VERTEX DATA =======================
     // Interleaved vertex data: position (x, y, z) + color (r, g, b)
@@ -191,7 +210,7 @@ int main()
         -0.5f, -0.5f, 0.0f, 0.2f, 0.8f, 0.1f // Bottom-left
     };
 
-    // Index buffer for drawing two triangles (a quad)
+    // Index buffer for drawing two triangles (a quad) this has to be an unsigned int
     unsigned int indices[] = {
         0, 1, 2, // First triangle
         0, 2, 3  // Second triangle
@@ -212,7 +231,7 @@ int main()
 
     va.AddBuffer(vb, layout);
 
-    IndexBuffer ib(indices, 6);
+    IndexBuffer ib(indices, 6); //? maybe it could just be indices and in the method you do sizeof()
 
     // ======================= SHADER SETUP =======================
 
@@ -239,6 +258,9 @@ int main()
 
     while (!glfwWindowShouldClose(window))
     {
+      // input
+      processInput(window);
+
       GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
       updateTitle(window, "MyFirstWindow"); //* This is only for the fps
