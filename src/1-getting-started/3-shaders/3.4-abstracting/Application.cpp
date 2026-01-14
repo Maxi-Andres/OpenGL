@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include "glad/glad.h" // with this the ouput doesn't say that it has linking problems
 #include <GLFW/glfw3.h>
 
 #include <iostream>
@@ -11,6 +11,7 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
+#include "Shader.h"
 
 // ======================= FPS COUNTER FUNCTIONS =======================
 
@@ -49,7 +50,6 @@ void updateTitle(GLFWwindow *window, const std::string &title)
   std::string newTitle = ss.str();
   glfwSetWindowTitle(window, newTitle.c_str());
 }
-//! ============================================================
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
@@ -66,103 +66,6 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height)
   // make sure the viewport matches the new window dimensions; note that width and
   // height will be significantly larger than specified on retina displays.
   glViewport(0, 0, width, height);
-}
-
-//! ============================================================
-
-// ======================= SHADER PARSER =======================
-
-struct ShaderProgramSource
-{
-  std::string VertexSource;
-  std::string FragmentSource;
-};
-
-// Parses a shader file containing both vertex and fragment shaders
-// Expects #shader vertex and #shader fragment directives to separate the two
-static ShaderProgramSource ParseShader(const std::string &filepath)
-{
-  std::ifstream stream(filepath);
-
-  if (!stream.is_open())
-  {
-    std::cout << "[ERROR] Failed to open shader file at: "
-              << filepath << std::endl;
-    return {};
-  }
-
-  enum class ShaderType
-  {
-    NONE = -1,
-    VERTEX = 0,
-    FRAGMENT = 1
-  };
-
-  std::string line;
-  std::stringstream ss[2];
-  ShaderType type = ShaderType::NONE;
-
-  while (getline(stream, line))
-  {
-    if (line.find("#shader") != std::string::npos)
-    {
-      if (line.find("vertex") != std::string::npos)
-        type = ShaderType::VERTEX;
-      else if (line.find("fragment") != std::string::npos)
-        type = ShaderType::FRAGMENT;
-    }
-    else
-    {
-      ss[(int)type] << line << '\n';
-    }
-  }
-
-  return {ss[0].str(), ss[1].str()};
-}
-
-// Compiles an individual shader (vertex or fragment) and checks for GLSL syntax errors
-static unsigned int CompileShader(unsigned int type, const std::string &source)
-{
-  GLCall(unsigned int id = glCreateShader(type));
-  const char *src = source.c_str();
-  GLCall(glShaderSource(id, 1, &src, nullptr));
-  GLCall(glCompileShader(id));
-
-  // Check for compilation errors
-  int result;
-  GLCall(glGetShaderiv(id, GL_COMPILE_STATUS, &result));
-  if (result == GL_FALSE)
-  {
-    int length;
-    GLCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
-    char *message = (char *)alloca(length * sizeof(char));
-    GLCall(glGetShaderInfoLog(id, length, &length, message));
-    std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
-    std::cout << message << std::endl;
-    GLCall(glDeleteShader(id));
-    return 0;
-  }
-
-  return id;
-}
-
-// Compiles both vertex and fragment shaders, links them into a GPU program, validates it, and cleans up individual shaders
-static unsigned int CreateShader(const std::string &vertexShader, const std::string &fragmentShader)
-{
-  GLCall(unsigned int program = glCreateProgram());
-  unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-  unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-  GLCall(glAttachShader(program, vs));
-  GLCall(glAttachShader(program, fs));
-  GLCall(glLinkProgram(program));
-  GLCall(glValidateProgram(program));
-
-  // Delete individual shaders as they're now linked into the program
-  GLCall(glDeleteShader(vs));
-  GLCall(glDeleteShader(fs));
-
-  return program;
 }
 
 int main()
@@ -235,21 +138,25 @@ int main()
 
     // ======================= SHADER SETUP =======================
 
-    ShaderProgramSource source = ParseShader("../../src/1-getting-started/3-shaders/3.4-abstracting/shaders/Shaders.shaders");
-
-    unsigned int shaderProgram = CreateShader(source.VertexSource, source.FragmentSource);
-    GLCall(glUseProgram(shaderProgram));
+    Shader shader("../../src/1-getting-started/3-shaders/3.4-abstracting/shaders/Shaders.shaders");
+    shader.Bind();
 
     // ======================= UNIFORM LOCATION =======================
     // Get uniform location (must be done after shader program is active)
-    GLCall(int uLocation = glGetUniformLocation(shaderProgram, "scale"));
-    ASSERT(uLocation != -1);
+    // GLCall(int uLocation = glGetUniformLocation(shaderProgram, "scale"));
+    // ASSERT(uLocation != -1);
+
+    // shader.SetUniform4f("scale", );
 
     //! Unbind everything (good practice to avoid accidental modifications)
-    GLCall(glBindVertexArray(0));
-    GLCall(glUseProgram(0));
-    GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
-    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+    va.Unbind();
+    shader.Unbind();
+    vb.Unbind();
+    ib.Unbind();
+    // GLCall(glBindVertexArray(0));
+    // GLCall(glUseProgram(0));
+    // GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+    // GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 
     // ======================= RENDER LOOP =======================
 
@@ -266,8 +173,9 @@ int main()
       updateTitle(window, "MyFirstWindow"); //* This is only for the fps
 
       // Activate shader and set uniform
-      GLCall(glUseProgram(shaderProgram));
-      GLCall(glUniform1f(uLocation, r));
+      shader.Bind();
+      // GLCall(glUniform1f(uLocation, r));
+      shader.SetUniform1f("scale", r);
 
       // Bind VAO and index buffer, then draw
       va.Bind();
@@ -291,7 +199,7 @@ int main()
     // GLCall(glDeleteVertexArrays(1, &VAO));
     // GLCall(glDeleteBuffers(1, &VBO));
     // GLCall(glDeleteBuffers(1, &EBO));
-    GLCall(glDeleteProgram(shaderProgram));
+    // GLCall(glDeleteProgram(shaderProgram)); // there is no need to delete because of the scope
   }
   // glfwDestroyWindow(window);
   glfwTerminate();
