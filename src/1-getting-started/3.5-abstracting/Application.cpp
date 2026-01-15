@@ -9,6 +9,7 @@
 #include "Renderer.h"
 
 #include "VertexBuffer.h"
+#include "VertexBufferLayout.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "Shader.h"
@@ -120,10 +121,6 @@ int main()
     };
 
     // ======================= VAO / VBO / EBO =======================
-    // unsigned int VAO, VBO, EBO;
-    // glGenVertexArrays(1, &VAO);
-    // glBindVertexArray(VAO);
-
     VertexArray va;
     VertexBuffer vb(vertices, sizeof(vertices));
 
@@ -138,25 +135,16 @@ int main()
 
     // ======================= SHADER SETUP =======================
 
-    Shader shader("../../src/1-getting-started/3-shaders/3.4-abstracting/shaders/Shaders.shaders");
+    Shader shader("../../src/1-getting-started/3.5-abstracting/shaders/Shaders.shaders");
     shader.Bind();
-
-    // ======================= UNIFORM LOCATION =======================
-    // Get uniform location (must be done after shader program is active)
-    // GLCall(int uLocation = glGetUniformLocation(shaderProgram, "scale"));
-    // ASSERT(uLocation != -1);
-
-    // shader.SetUniform4f("scale", );
 
     //! Unbind everything (good practice to avoid accidental modifications)
     va.Unbind();
     shader.Unbind();
     vb.Unbind();
     ib.Unbind();
-    // GLCall(glBindVertexArray(0));
-    // GLCall(glUseProgram(0));
-    // GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
-    // GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+
+    Renderer renderer;
 
     // ======================= RENDER LOOP =======================
 
@@ -168,20 +156,15 @@ int main()
       // input
       processInput(window);
 
-      GLCall(glClear(GL_COLOR_BUFFER_BIT));
+      renderer.Clear();
 
       updateTitle(window, "MyFirstWindow"); //* This is only for the fps
 
       // Activate shader and set uniform
-      shader.Bind();
-      // GLCall(glUniform1f(uLocation, r));
+      shader.Bind(); // Get uniform location (must be done after shader program is active)
       shader.SetUniform1f("scale", r);
 
-      // Bind VAO and index buffer, then draw
-      va.Bind();
-      ib.Bind();
-
-      GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
+      renderer.Draw(va, ib, shader);
 
       // Animate the uniform value
       if (r > 1.5f)
@@ -195,13 +178,7 @@ int main()
       glfwPollEvents();
     }
 
-    // ======================= CLEANUP =======================
-    // GLCall(glDeleteVertexArrays(1, &VAO));
-    // GLCall(glDeleteBuffers(1, &VBO));
-    // GLCall(glDeleteBuffers(1, &EBO));
-    // GLCall(glDeleteProgram(shaderProgram)); // there is no need to delete because of the scope
-  }
-  // glfwDestroyWindow(window);
+  } // there is no need to delete anything because of the scope
   glfwTerminate();
 
   return 0;

@@ -11,12 +11,12 @@ find_package(glfw3 REQUIRED)
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
 set(SOURCE_FILE 
-  src/1-getting-started/3-shaders/3.4-abstracting/Application.cpp
-  src/1-getting-started/3-shaders/3.4-abstracting/VertexBuffer.cpp
-  src/1-getting-started/3-shaders/3.4-abstracting/IndexBuffer.cpp
-  src/1-getting-started/3-shaders/3.4-abstracting/Renderer.cpp
-  src/1-getting-started/3-shaders/3.4-abstracting/VertexArray.cpp
-  src/1-getting-started/3-shaders/3.4-abstracting/Shader.cpp
+  src/1-getting-started/3.5-abstracting/Application.cpp
+  src/1-getting-started/3.5-abstracting/VertexBuffer.cpp
+  src/1-getting-started/3.5-abstracting/IndexBuffer.cpp
+  src/1-getting-started/3.5-abstracting/Renderer.cpp
+  src/1-getting-started/3.5-abstracting/VertexArray.cpp
+  src/1-getting-started/3.5-abstracting/Shader.cpp
 )
 
 

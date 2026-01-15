@@ -1,5 +1,7 @@
+#include <glad/glad.h>
 #include "VertexArray.h"
 
+#include "VertexBufferLayout.h"
 #include "Renderer.h"
 
 VertexArray::VertexArray()

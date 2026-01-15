@@ -1,6 +1,8 @@
 #pragma once
-#include "VertexBufferLayout.h" // ! el orden importa
+// #include "VertexBufferLayout.h" // ! el orden importa //lo comento por el include ciclico que hay
 #include "VertexBuffer.h"
+
+class VertexBufferLayout;
 
 class VertexArray
 {
