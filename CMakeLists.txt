@@ -7,17 +7,27 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 
+
 # set(SOURCE_FILE 
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
-set(SOURCE_FILE 
-  src/1-getting-started/3.5-abstracting/Application.cpp
-  src/1-getting-started/3.5-abstracting/VertexBuffer.cpp
-  src/1-getting-started/3.5-abstracting/IndexBuffer.cpp
-  src/1-getting-started/3.5-abstracting/Renderer.cpp
-  src/1-getting-started/3.5-abstracting/VertexArray.cpp
-  src/1-getting-started/3.5-abstracting/Shader.cpp
-)
+# set(SOURCE_FILE 
+#   src/1-getting-started/3.5-abstracting/Application.cpp
+#   src/1-getting-started/3.5-abstracting/VertexBuffer.cpp
+#   src/1-getting-started/3.5-abstracting/IndexBuffer.cpp
+#   src/1-getting-started/3.5-abstracting/Renderer.cpp
+#   src/1-getting-started/3.5-abstracting/VertexArray.cpp
+#   src/1-getting-started/3.5-abstracting/Shader.cpp
+# )
+
+
+# ---  Single file lessons ---
+# set(SOURCE_FILE "src/1-getting-started/2-hello-triangle/2.2-hello-rectangle.cpp")
+# set(SOURCE_FILE "src/1-getting-started/2-hello-triangle/2.3-hello-triangles-colors.cpp")
+
+# --- Lessons with multiple files ---
+file(GLOB SOURCE_FILE "src/1-getting-started/3.5-abstracting/*.cpp")
+# file(GLOB SOURCE_FILE "src/1-getting-started/4-textures/*.cpp")
 
 
 set(SOURCES
