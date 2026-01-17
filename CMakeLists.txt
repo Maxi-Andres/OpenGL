@@ -26,8 +26,21 @@ find_package(glfw3 REQUIRED)
 # set(SOURCE_FILE "src/1-getting-started/2-hello-triangle/2.3-hello-triangles-colors.cpp")
 
 # --- Lessons with multiple files ---
-file(GLOB SOURCE_FILE "src/1-getting-started/3.5-abstracting/*.cpp")
+# file(GLOB SOURCE_FILE "src/1-getting-started/3.5-abstracting/*.cpp")
 # file(GLOB SOURCE_FILE "src/1-getting-started/4-textures/*.cpp")
+
+# set(SOURCE_FILE
+#   src/1-getting-started/4-textures/Application.cpp
+#   src/1-getting-started/4-textures/VertexBuffer.cpp
+#   src/1-getting-started/4-textures/IndexBuffer.cpp
+#   src/1-getting-started/4-textures/Renderer.cpp
+#   src/1-getting-started/4-textures/VertexArray.cpp
+#   src/1-getting-started/4-textures/Shader.cpp
+#   src/1-getting-started/4-textures/Texture.cpp
+# )
+
+file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/4-textures/*.cpp")
+
 
 
 set(SOURCES
