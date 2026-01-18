@@ -1,6 +1,7 @@
 #include <glad/glad.h> //! SIEMPRE ESTO ARRIBA DE TODO SI NO NO ANDA, si no pongo esto se rompe pero cherno no lo pone, debe ser por visual
 
 #include "Texture.h"
+#define STB_IMAGE_IMPLEMENTATION
 #include "vendor/stb_image/stb_image.h"
 
 Texture::Texture(const std::string &path)

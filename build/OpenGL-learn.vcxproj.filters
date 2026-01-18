@@ -25,12 +25,6 @@
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\vendor\glm\detail\glm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\vendor\stb_image\stb_image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>

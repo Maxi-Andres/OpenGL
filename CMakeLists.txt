@@ -27,7 +27,6 @@ target_include_directories(OpenGL-learn PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/lib
   ${CMAKE_CURRENT_SOURCE_DIR}/shaders
-  ${CMAKE_CURRENT_SOURCE_DIR}/vendor
 )
 target_link_libraries(OpenGL-learn ${GLFW3_LIBRARY} OpenGL::GL)
 

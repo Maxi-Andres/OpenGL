@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Debug/OpenGL-learn.exe"
+			"path" : "RelWithDebInfo/OpenGL-learn.exe"
 		},
 		{
-			"path" : "Debug/OpenGL-learn.pdb"
+			"path" : "RelWithDebInfo/OpenGL-learn.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +35,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 32,
+				"line" : 31,
 				"parent" : 0
 			},
 			{
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /O2 /Ob1 /DNDEBUG -MD"
 				}
 			],
 			"includes" : 
@@ -68,10 +68,6 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/shaders"
-				},
-				{
-					"backtrace" : 3,
-					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/vendor"
 				}
 			],
 			"language" : "CXX",
@@ -84,16 +80,14 @@
 				4,
 				5,
 				6,
-				7,
-				8,
-				9
+				7
 			]
 		},
 		{
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd"
+					"fragment" : "/DWIN32 /D_WINDOWS /Zi /O2 /Ob1 /DNDEBUG -MD"
 				}
 			],
 			"includes" : 
@@ -109,16 +103,12 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/shaders"
-				},
-				{
-					"backtrace" : 3,
-					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/vendor"
 				}
 			],
 			"language" : "C",
 			"sourceIndexes" : 
 			[
-				10
+				8
 			]
 		}
 	],
@@ -134,7 +124,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /O2 /Ob1 /DNDEBUG -MD",
 				"role" : "flags"
 			},
 			{
@@ -183,9 +173,7 @@
 				5,
 				6,
 				7,
-				8,
-				9,
-				10
+				8
 			]
 		}
 	],
@@ -237,18 +225,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/1-getting-started/5-transformations/VertexBuffer.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/vendor/glm/detail/glm.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/vendor/stb_image/stb_image.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
