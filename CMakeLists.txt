@@ -12,15 +12,31 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(SOURCE_FILE 
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
-  file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/5.1-maths/*.cpp")
+  file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/5.2-projection-matrices/*.cpp")
 
 set(SOURCES
   src/glad.c
 )
 
-add_executable(OpenGL-learn
-  ${SOURCE_FILE}
-  ${SOURCES}
+# Define la ruta a la carpeta de imgui (ajusta si es necesario)
+set(IMGUI_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/vendor/imgui)
+
+# Lista todos los archivos fuente necesarios de ImGui
+set(IMGUI_SOURCES
+    ${IMGUI_DIR}/imgui.cpp
+    ${IMGUI_DIR}/imgui_demo.cpp
+    ${IMGUI_DIR}/imgui_draw.cpp
+    ${IMGUI_DIR}/imgui_tables.cpp
+    ${IMGUI_DIR}/imgui_widgets.cpp
+    ${IMGUI_DIR}/imgui_impl_glfw.cpp
+    ${IMGUI_DIR}/imgui_impl_opengl3.cpp
+)
+
+# Agrega todos estos archivos a tu ejecutable
+add_executable(OpenGL-learn 
+    ${SOURCE_FILE} 
+    ${SOURCES} 
+    ${IMGUI_SOURCES}
 )
 
 target_include_directories(OpenGL-learn PRIVATE 

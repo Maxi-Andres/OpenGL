@@ -29,19 +29,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 21,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 31,
+				"line" : 47,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 26,
+				"line" : 42,
 				"parent" : 0
 			}
 		]
@@ -80,7 +80,14 @@
 				4,
 				5,
 				6,
-				7
+				7,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
 			]
 		},
 		{
@@ -173,7 +180,14 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
 			]
 		}
 	],
@@ -182,55 +196,97 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/Application.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/Application.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/Fps.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/Fps.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/IndexBuffer.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/IndexBuffer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/Renderer.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/Renderer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/Shader.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/Shader.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/Texture.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/Texture.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/VertexArray.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/VertexArray.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/5.1-maths/VertexBuffer.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.2-projection-matrices/VertexBuffer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
 			"path" : "src/glad.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui_demo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui_draw.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui_tables.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui_widgets.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui_impl_glfw.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "include/vendor/imgui/imgui_impl_opengl3.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

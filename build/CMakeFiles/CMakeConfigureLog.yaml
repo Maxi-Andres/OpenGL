@@ -101,7 +101,7 @@ events:
       The output was:
       0
       Versi├│n de MSBuild 17.14.14+a129329f1 para .NET Framework
-      Compilaci├│n iniciada a las 18/1/2026 12:42:59.
+      Compilaci├│n iniciada a las 18/1/2026 17:33:06.
       
       Proyecto "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\4.1.0-rc1\\CompilerIdC\\CompilerIdC.vcxproj" en nodo 1 (destinos predeterminados).
       PrepareForBuild:
@@ -130,7 +130,7 @@ events:
           0 Advertencia(s)
           0 Errores
       
-      Tiempo transcurrido 00:00:00.31
+      Tiempo transcurrido 00:00:00.33
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -905,7 +905,7 @@ events:
       The output was:
       0
       Versi├│n de MSBuild 17.14.14+a129329f1 para .NET Framework
-      Compilaci├│n iniciada a las 18/1/2026 12:43:00.
+      Compilaci├│n iniciada a las 18/1/2026 17:33:07.
       
       Proyecto "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\4.1.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" en nodo 1 (destinos predeterminados).
       PrepareForBuild:
@@ -1329,8 +1329,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-zp7wfa"
-      binary: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-zp7wfa"
+      source: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-mrd4r2"
+      binary: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-mrd4r2"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1339,40 +1339,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-zp7wfa'
+        Change Dir: 'C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-mrd4r2'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a92c0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_abbd5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         Versi├│n de MSBuild 17.14.14+a129329f1 para .NET Framework
-        Compilaci├│n iniciada a las 18/1/2026 12:43:01.
+        Compilaci├│n iniciada a las 18/1/2026 17:33:08.
         
-        Proyecto "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zp7wfa\\cmTC_a92c0.vcxproj" en nodo 1 (destinos predeterminados).
+        Proyecto "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mrd4r2\\cmTC_abbd5.vcxproj" en nodo 1 (destinos predeterminados).
         PrepareForBuild:
-          Creando directorio "cmTC_a92c0.dir\\Debug\\".
+          Creando directorio "cmTC_abbd5.dir\\Debug\\".
           La salida estructurada est├í habilitada. El formato del diagn├│stico del compilador reflejar├í la jerarqu├¡a de errores. Consulte https://aka.ms/cpp/structured-output para obtener m├ís detalles.
-          Creando directorio "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zp7wfa\\Debug\\".
-          Creando directorio "cmTC_a92c0.dir\\Debug\\cmTC_a92c0.tlog\\".
+          Creando directorio "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mrd4r2\\Debug\\".
+          Creando directorio "cmTC_abbd5.dir\\Debug\\cmTC_abbd5.tlog\\".
         InitializeBuildStatus:
-          Se crear├í "cmTC_a92c0.dir\\Debug\\cmTC_a92c0.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
-          Aplicando tarea Touch a "cmTC_a92c0.dir\\Debug\\cmTC_a92c0.tlog\\unsuccessfulbuild".
+          Se crear├í "cmTC_abbd5.dir\\Debug\\cmTC_abbd5.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
+          Aplicando tarea Touch a "cmTC_abbd5.dir\\Debug\\cmTC_abbd5.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_a92c0.dir\\Debug\\\\" /Fd"cmTC_a92c0.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_abbd5.dir\\Debug\\\\" /Fd"cmTC_abbd5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           Compilador de optimizaci├│n de C/C++ de Microsoft (R) versi├│n 19.44.35211 para x64
           (C) Microsoft Corporation. Todos los derechos reservados.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_a92c0.dir\\Debug\\\\" /Fd"cmTC_a92c0.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_abbd5.dir\\Debug\\\\" /Fd"cmTC_abbd5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zp7wfa\\Debug\\cmTC_a92c0.exe" /INCREMENTAL /ILK:"cmTC_a92c0.dir\\Debug\\cmTC_a92c0.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-zp7wfa/Debug/cmTC_a92c0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-zp7wfa/Debug/cmTC_a92c0.lib" /MACHINE:X64  /machine:x64 cmTC_a92c0.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_a92c0.vcxproj -> C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zp7wfa\\Debug\\cmTC_a92c0.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mrd4r2\\Debug\\cmTC_abbd5.exe" /INCREMENTAL /ILK:"cmTC_abbd5.dir\\Debug\\cmTC_abbd5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-mrd4r2/Debug/cmTC_abbd5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-mrd4r2/Debug/cmTC_abbd5.lib" /MACHINE:X64  /machine:x64 cmTC_abbd5.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_abbd5.vcxproj -> C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mrd4r2\\Debug\\cmTC_abbd5.exe
         FinalizeBuildStatus:
-          Se eliminar├í el archivo "cmTC_a92c0.dir\\Debug\\cmTC_a92c0.tlog\\unsuccessfulbuild".
-          Aplicando tarea Touch a "cmTC_a92c0.dir\\Debug\\cmTC_a92c0.tlog\\cmTC_a92c0.lastbuildstate".
-        Compilaci├│n del proyecto terminada "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zp7wfa\\cmTC_a92c0.vcxproj" (destinos predeterminados).
+          Se eliminar├í el archivo "cmTC_abbd5.dir\\Debug\\cmTC_abbd5.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_abbd5.dir\\Debug\\cmTC_abbd5.tlog\\cmTC_abbd5.lastbuildstate".
+        Compilaci├│n del proyecto terminada "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mrd4r2\\cmTC_abbd5.vcxproj" (destinos predeterminados).
         
         Compilaci├│n correcta.
             0 Advertencia(s)
             0 Errores
         
-        Tiempo transcurrido 00:00:00.30
+        Tiempo transcurrido 00:00:00.32
         
       exitCode: 0
   -
@@ -1412,8 +1412,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-15bla4"
-      binary: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-15bla4"
+      source: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-tn76oz"
+      binary: "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-tn76oz"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1423,34 +1423,34 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-15bla4'
+        Change Dir: 'C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-tn76oz'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1ecd2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7b2cb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         Versi├│n de MSBuild 17.14.14+a129329f1 para .NET Framework
-        Compilaci├│n iniciada a las 18/1/2026 12:43:02.
+        Compilaci├│n iniciada a las 18/1/2026 17:33:08.
         
-        Proyecto "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-15bla4\\cmTC_1ecd2.vcxproj" en nodo 1 (destinos predeterminados).
+        Proyecto "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tn76oz\\cmTC_7b2cb.vcxproj" en nodo 1 (destinos predeterminados).
         PrepareForBuild:
-          Creando directorio "cmTC_1ecd2.dir\\Debug\\".
+          Creando directorio "cmTC_7b2cb.dir\\Debug\\".
           La salida estructurada est├í habilitada. El formato del diagn├│stico del compilador reflejar├í la jerarqu├¡a de errores. Consulte https://aka.ms/cpp/structured-output para obtener m├ís detalles.
-          Creando directorio "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-15bla4\\Debug\\".
-          Creando directorio "cmTC_1ecd2.dir\\Debug\\cmTC_1ecd2.tlog\\".
+          Creando directorio "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tn76oz\\Debug\\".
+          Creando directorio "cmTC_7b2cb.dir\\Debug\\cmTC_7b2cb.tlog\\".
         InitializeBuildStatus:
-          Se crear├í "cmTC_1ecd2.dir\\Debug\\cmTC_1ecd2.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
-          Aplicando tarea Touch a "cmTC_1ecd2.dir\\Debug\\cmTC_1ecd2.tlog\\unsuccessfulbuild".
+          Se crear├í "cmTC_7b2cb.dir\\Debug\\cmTC_7b2cb.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
+          Aplicando tarea Touch a "cmTC_7b2cb.dir\\Debug\\cmTC_7b2cb.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_1ecd2.dir\\Debug\\\\" /Fd"cmTC_1ecd2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_7b2cb.dir\\Debug\\\\" /Fd"cmTC_7b2cb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           Compilador de optimizaci├│n de C/C++ de Microsoft (R) versi├│n 19.44.35211 para x64
           (C) Microsoft Corporation. Todos los derechos reservados.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_1ecd2.dir\\Debug\\\\" /Fd"cmTC_1ecd2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_7b2cb.dir\\Debug\\\\" /Fd"cmTC_7b2cb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-15bla4\\Debug\\cmTC_1ecd2.exe" /INCREMENTAL /ILK:"cmTC_1ecd2.dir\\Debug\\cmTC_1ecd2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-15bla4/Debug/cmTC_1ecd2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-15bla4/Debug/cmTC_1ecd2.lib" /MACHINE:X64  /machine:x64 cmTC_1ecd2.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_1ecd2.vcxproj -> C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-15bla4\\Debug\\cmTC_1ecd2.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tn76oz\\Debug\\cmTC_7b2cb.exe" /INCREMENTAL /ILK:"cmTC_7b2cb.dir\\Debug\\cmTC_7b2cb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-tn76oz/Debug/cmTC_7b2cb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/build/CMakeFiles/CMakeScratch/TryCompile-tn76oz/Debug/cmTC_7b2cb.lib" /MACHINE:X64  /machine:x64 cmTC_7b2cb.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_7b2cb.vcxproj -> C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tn76oz\\Debug\\cmTC_7b2cb.exe
         FinalizeBuildStatus:
-          Se eliminar├í el archivo "cmTC_1ecd2.dir\\Debug\\cmTC_1ecd2.tlog\\unsuccessfulbuild".
-          Aplicando tarea Touch a "cmTC_1ecd2.dir\\Debug\\cmTC_1ecd2.tlog\\cmTC_1ecd2.lastbuildstate".
-        Compilaci├│n del proyecto terminada "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-15bla4\\cmTC_1ecd2.vcxproj" (destinos predeterminados).
+          Se eliminar├í el archivo "cmTC_7b2cb.dir\\Debug\\cmTC_7b2cb.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_7b2cb.dir\\Debug\\cmTC_7b2cb.tlog\\cmTC_7b2cb.lastbuildstate".
+        Compilaci├│n del proyecto terminada "C:\\Users\\Max\\Desktop\\Universidad\\ProyectosProgramacion\\OpenGL\\ProjectOpenGLBasics\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tn76oz\\cmTC_7b2cb.vcxproj" (destinos predeterminados).
         
         Compilaci├│n correcta.
             0 Advertencia(s)
