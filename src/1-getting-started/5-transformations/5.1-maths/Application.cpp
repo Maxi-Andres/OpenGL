@@ -111,7 +111,8 @@ int main()
 
     // ======================= SHADER SETUP =======================
 
-    Shader shader("../../src/1-getting-started/5-transformations/shaders/Shaders.shaders");
+    // this is from the build that's why ../
+    Shader shader("../../src/1-getting-started/5-transformations/5.1-maths/shaders/Shaders.shaders");
     shader.Bind(); // this has to match SetUniform1i (default 0)
     shader.SetUniformMat4f("u_MVP", proj);
 

@@ -12,7 +12,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(SOURCE_FILE 
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
-  file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/*.cpp")
+  file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/5.1-maths/*.cpp")
 
 set(SOURCES
   src/glad.c

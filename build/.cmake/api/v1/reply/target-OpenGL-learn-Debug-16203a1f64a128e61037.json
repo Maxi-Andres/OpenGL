@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "MinSizeRel/OpenGL-learn.exe"
+			"path" : "Debug/OpenGL-learn.exe"
 		},
 		{
-			"path" : "MinSizeRel/OpenGL-learn.pdb"
+			"path" : "Debug/OpenGL-learn.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O1 /Ob1 /DNDEBUG -MD"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
 				}
 			],
 			"includes" : 
@@ -87,7 +87,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /O1 /Ob1 /DNDEBUG -MD"
+					"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd"
 				}
 			],
 			"includes" : 
@@ -124,11 +124,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O1 /Ob1 /DNDEBUG -MD",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /INCREMENTAL:NO",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL",
 				"role" : "flags"
 			},
 			{
@@ -182,49 +182,49 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/Application.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/Application.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/Fps.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/Fps.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/IndexBuffer.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/IndexBuffer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/Renderer.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/Renderer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/Shader.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/Shader.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/Texture.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/Texture.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/VertexArray.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/VertexArray.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/1-getting-started/5-transformations/VertexBuffer.cpp",
+			"path" : "src/1-getting-started/5-transformations/5.1-maths/VertexBuffer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
