@@ -7,41 +7,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # set(SOURCE_FILE 
 #   src/1-getting-started/2.3-hello-triangles-colors.cpp)
 
-# set(SOURCE_FILE 
-#   src/1-getting-started/3.5-abstracting/Application.cpp
-#   src/1-getting-started/3.5-abstracting/VertexBuffer.cpp
-#   src/1-getting-started/3.5-abstracting/IndexBuffer.cpp
-#   src/1-getting-started/3.5-abstracting/Renderer.cpp
-#   src/1-getting-started/3.5-abstracting/VertexArray.cpp
-#   src/1-getting-started/3.5-abstracting/Shader.cpp
-# )
-
-
-# ---  Single file lessons ---
-# set(SOURCE_FILE "src/1-getting-started/2-hello-triangle/2.2-hello-rectangle.cpp")
-# set(SOURCE_FILE "src/1-getting-started/2-hello-triangle/2.3-hello-triangles-colors.cpp")
-
-# --- Lessons with multiple files ---
-# file(GLOB SOURCE_FILE "src/1-getting-started/3.5-abstracting/*.cpp")
-# file(GLOB SOURCE_FILE "src/1-getting-started/4-textures/*.cpp")
-
-# set(SOURCE_FILE
-#   src/1-getting-started/4-textures/Application.cpp
-#   src/1-getting-started/4-textures/VertexBuffer.cpp
-#   src/1-getting-started/4-textures/IndexBuffer.cpp
-#   src/1-getting-started/4-textures/Renderer.cpp
-#   src/1-getting-started/4-textures/VertexArray.cpp
-#   src/1-getting-started/4-textures/Shader.cpp
-#   src/1-getting-started/4-textures/Texture.cpp
-# )
-
-file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/4-textures/*.cpp")
-
-
+  file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/*.cpp")
 
 set(SOURCES
   src/glad.c
@@ -51,7 +22,6 @@ add_executable(OpenGL-learn
   ${SOURCE_FILE}
   ${SOURCES}
 )
-
 
 target_include_directories(OpenGL-learn PRIVATE 
   ${CMAKE_CURRENT_SOURCE_DIR}/include
