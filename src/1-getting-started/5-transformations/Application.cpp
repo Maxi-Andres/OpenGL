@@ -18,7 +18,7 @@
 #include "vendor/glm/glm.hpp"
 #include "vendor/glm/gtc/matrix_transform.hpp"
 
-#include "fps.cpp" // I do it this way and not with a .h because I only use it here, so the compiler will just paste the code here and that's it (I would still have to have the .h, but I didn't do it because I didn't feel like it).
+#include "Fps.h"
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 void processInput(GLFWwindow *window)

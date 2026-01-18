@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Debug/OpenGL-learn.exe"
+			"path" : "Release/OpenGL-learn.exe"
 		},
 		{
-			"path" : "Debug/OpenGL-learn.pdb"
+			"path" : "Release/OpenGL-learn.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +35,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 31,
+				"line" : 32,
 				"parent" : 0
 			},
 			{
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD"
 				}
 			],
 			"includes" : 
@@ -68,6 +68,10 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/shaders"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/vendor"
 				}
 			],
 			"language" : "CXX",
@@ -81,14 +85,15 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9
 			]
 		},
 		{
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd"
+					"fragment" : "/DWIN32 /D_WINDOWS /O2 /Ob2 /DNDEBUG -MD"
 				}
 			],
 			"includes" : 
@@ -104,12 +109,16 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/shaders"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/Max/Desktop/Universidad/ProyectosProgramacion/OpenGL/ProjectOpenGLBasics/vendor"
 				}
 			],
 			"language" : "C",
 			"sourceIndexes" : 
 			[
-				9
+				10
 			]
 		}
 	],
@@ -125,11 +134,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -MD",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO",
 				"role" : "flags"
 			},
 			{
@@ -175,7 +184,8 @@
 				6,
 				7,
 				8,
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -185,6 +195,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/1-getting-started/5-transformations/Application.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/1-getting-started/5-transformations/Fps.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

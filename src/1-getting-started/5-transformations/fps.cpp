@@ -5,13 +5,22 @@
 
 #include <iomanip>
 
+#include "Fps.h"
+
 float mDeltaTime = 0.0f;
 float mLastFrame = 0.0f;
 float mPreviousTime = 0.0f;
 int mFrameCount = 0;
 float mFPS = 0.0f;
 
-void updateTitle(GLFWwindow *window, const std::string &title);
+void updateTitle(GLFWwindow *window, const std::string &title)
+{
+  float fps = getFPS();
+  std::stringstream ss;
+  ss << title << " | FPS: " << std::fixed << std::setprecision(2) << fps;
+  std::string newTitle = ss.str();
+  glfwSetWindowTitle(window, newTitle.c_str());
+}
 
 float getFPS()
 {
@@ -28,13 +37,4 @@ float getFPS()
   }
 
   return mFPS;
-}
-
-void updateTitle(GLFWwindow *window, const std::string &title)
-{
-  float fps = getFPS();
-  std::stringstream ss;
-  ss << title << " | FPS: " << std::fixed << std::setprecision(2) << fps;
-  std::string newTitle = ss.str();
-  glfwSetWindowTitle(window, newTitle.c_str());
 }
