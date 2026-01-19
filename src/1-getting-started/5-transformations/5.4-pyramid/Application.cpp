@@ -199,6 +199,9 @@ int main()
     glm::vec3 translation(0, 0, 0);
     rotation = 0.0f;
 
+    glm::vec3 viewtranslation(0, 0, 0);
+    float viewangle = 0.0f;
+
     float r = 1.0f; // esto quedo por la escala, no lo saco porque tengo que sacar el uniform y bla bla...
 
     float levitation = 0.0f;
@@ -249,6 +252,9 @@ int main()
         glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
         model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f)); // el que tiene 1.0f es el eje que rota x,y,z
 
+        view = glm::translate(view, viewtranslation);
+        view = glm::rotate(view, glm::radians(viewangle), glm::vec3(0.0f, 0.0f, 1.0f));
+
         glm::mat4 mvp = proj * view * model;
         shader.SetUniformMat4f("u_MVP", mvp);
 
@@ -257,7 +263,9 @@ int main()
 
       {
         ImGui::SliderFloat3("Translation X, Y, Z", &translation.x, -1000.0f, 1000.0f);
+        ImGui::SliderFloat3("View Translation X, Y, Z", &viewtranslation.x, -5.0f, 5.0f);
         ImGui::SliderFloat("Rotation Y", &rotation, 0.0f, 360.0f);
+        ImGui::SliderFloat("Camara rotation", &viewangle, 0.0f, 360.0f);
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
       }
 
