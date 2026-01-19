@@ -39,8 +39,8 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height)
   glViewport(0, 0, width, height);
 }
 
-const unsigned int width = 800;
-const unsigned int height = 800;
+const unsigned int width = 1100;
+const unsigned int height = 1100;
 
 int main()
 {
@@ -126,39 +126,39 @@ int main()
     float vertices[] = {
         // BOTTOM FACE (Y=-50) - 4 vertices
         -50.0f, -50.0f,  50.0f,  0.8f, 0.7f, 0.4f,  0.0f, 0.0f,  // 0  (light brown)
-        50.0f, -50.0f,  50.0f,  0.8f, 0.7f, 0.4f,  1.0f, 0.0f,  // 1  (light brown)
-        50.0f, -50.0f, -50.0f,  0.8f, 0.7f, 0.4f,  1.0f, 1.0f,  // 2  (light brown)
-        -50.0f, -50.0f, -50.0f,  0.8f, 0.7f, 0.4f,  0.0f, 1.0f,  // 3  (light brown)
+        50.0f, -50.0f,  50.0f,  0.8f, 0.7f, 0.4f,  0.5f, 0.0f,  // 1  (light brown)
+        50.0f, -50.0f, -50.0f,  0.8f, 0.7f, 0.4f,  0.5, 0.5f,  // 2  (light brown)
+        -50.0f, -50.0f, -50.0f,  0.8f, 0.7f, 0.4f,  0.0f, 0.5f,  // 3  (light brown)
         
         // TOP FACE (Y=50) - 4 vertices
-        -50.0f,  50.0f,  50.0f,  0.9f, 0.9f, 0.9f,  0.0f, 0.0f,  // 4  (white)
-        50.0f,  50.0f,  50.0f,  0.9f, 0.9f, 0.9f,  1.0f, 0.0f,  // 5  (white)
+        -50.0f,  50.0f,  50.0f,  0.9f, 0.9f, 0.9f,  0.5f, 0.5f,  // 4  (white)
+        50.0f,  50.0f,  50.0f,  0.9f, 0.9f, 0.9f,  1.0f, 0.5f,  // 5  (white)
         50.0f,  50.0f, -50.0f,  0.9f, 0.9f, 0.9f,  1.0f, 1.0f,  // 6  (white)
-        -50.0f,  50.0f, -50.0f,  0.9f, 0.9f, 0.9f,  0.0f, 1.0f,  // 7  (white)
+        -50.0f,  50.0f, -50.0f,  0.9f, 0.9f, 0.9f,  0.5f, 1.0f,  // 7  (white)
         
         // FRONT FACE (+Z) - 4 vertices
-        -50.0f, -50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  0.0f, 0.0f,  // 8  (red)
-        50.0f, -50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  1.0f, 0.0f,  // 9  (red)
-        50.0f,  50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,  // 10 (red)
-        -50.0f,  50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  0.0f, 1.0f,  // 11 (red)
+        -50.0f, -50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  0.5f, 0.5f,  // 8  (red)
+        50.0f, -50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  0.0f, 0.5f,  // 9  (red)
+        50.0f,  50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  0.0f, 1.0f,  // 10 (red)
+        -50.0f,  50.0f,  50.0f,  1.0f, 0.0f, 0.0f,  0.5f, 1.0f,  // 11 (red)
         
         // BACK FACE (-Z) - 4 vertices
-        50.0f, -50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  0.0f, 0.0f,  // 12 (green)
-        -50.0f, -50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  1.0f, 0.0f,  // 13 (green)
-        -50.0f,  50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  1.0f, 1.0f,  // 14 (green)
-        50.0f,  50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  0.0f, 1.0f,  // 15 (green)
+        50.0f, -50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  0.5f, 0.5f,  // 12 (green)
+        -50.0f, -50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  0.0f, 0.5f,  // 13 (green)
+        -50.0f,  50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  0.0f, 1.0f,  // 14 (green)
+        50.0f,  50.0f, -50.0f,  0.0f, 1.0f, 0.0f,  0.5f, 1.0f,  // 15 (green)
         
         // LEFT FACE (-X) - 4 vertices
-        -50.0f, -50.0f, -50.0f,  0.0f, 0.0f, 1.0f,  0.0f, 0.0f,  // 16 (blue)
-        -50.0f, -50.0f,  50.0f,  0.0f, 0.0f, 1.0f,  1.0f, 0.0f,  // 17 (blue)
-        -50.0f,  50.0f,  50.0f,  0.0f, 0.0f, 1.0f,  1.0f, 1.0f,  // 18 (blue)
-        -50.0f,  50.0f, -50.0f,  0.0f, 0.0f, 1.0f,  0.0f, 1.0f,  // 19 (blue)
+        -50.0f, -50.0f, -50.0f,  0.0f, 0.0f, 1.0f,  0.5f, 0.5f,  // 16 (blue)
+        -50.0f, -50.0f,  50.0f,  0.0f, 0.0f, 1.0f,  0.0f, 0.5f,  // 17 (blue)
+        -50.0f,  50.0f,  50.0f,  0.0f, 0.0f, 1.0f,  0.0f, 1.0f,  // 18 (blue)
+        -50.0f,  50.0f, -50.0f,  0.0f, 0.0f, 1.0f,  0.5f, 1.0f,  // 19 (blue)
         
         // RIGHT FACE (+X) - 4 vertices
-        50.0f, -50.0f,  50.0f,  1.0f, 1.0f, 0.0f,  0.0f, 0.0f,  // 20 (yellow)
-        50.0f, -50.0f, -50.0f,  1.0f, 1.0f, 0.0f,  1.0f, 0.0f,  // 21 (yellow)
-        50.0f,  50.0f, -50.0f,  1.0f, 1.0f, 0.0f,  1.0f, 1.0f,  // 22 (yellow)
-        50.0f,  50.0f,  50.0f,  1.0f, 1.0f, 0.0f,  0.0f, 1.0f,  // 23 (yellow)
+        50.0f, -50.0f,  50.0f,  1.0f, 1.0f, 0.0f,  0.5f, 0.5f,  // 20 (yellow)
+        50.0f, -50.0f, -50.0f,  1.0f, 1.0f, 0.0f,  0.0f, 0.5f,  // 21 (yellow)
+        50.0f,  50.0f, -50.0f,  1.0f, 1.0f, 0.0f,  0.0f, 1.0f,  // 22 (yellow)
+        50.0f,  50.0f,  50.0f,  1.0f, 1.0f, 0.0f,  0.5f, 1.0f,  // 23 (yellow)
     };
     // clang-format on
 
@@ -214,7 +214,7 @@ int main()
     glm::mat4 proj = glm::mat4(1.0f);
 
     model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    view = glm::translate(view, glm::vec3(0.0f, -30.0f, -305.0f));
+    glm::mat4 baseView = glm::translate(view, glm::vec3(0.0f, -30.0f, -305.0f));
     proj = glm::perspective(glm::radians(45.0f), ((float)width / (float)height), 0.1f, 1000.0f); // if something is closer to 0.1f it would be cliped and further than 100
 
     // ======================= SHADER SETUP =======================
@@ -225,7 +225,7 @@ int main()
 
     // ======================= TEXTURE SETUP =======================
 
-    Texture texture("../../res/textures/grass_block_side.png"); // GL_NEAREST for it to works
+    Texture texture("../../res/textures/grass_block_atlas.png"); // GL_NEAREST for it to works
     texture.Bind();
     // this has to match SetUniform1i (default 0)
 
@@ -256,7 +256,10 @@ int main()
     float r = 1.0f; // esto quedo por la escala, no lo saco porque tengo que sacar el uniform y bla bla...
 
     bool modelRotationBool = false;
-    float modelRotation = 0.0f;
+    float modelRotationX = 0.0f;
+    float modelRotationY = 0.0f;
+    float modelRotationZ = 0.0f;
+
     double prevTime = glfwGetTime();
     bool rotationX = false;
     bool rotationY = false;
@@ -289,23 +292,29 @@ int main()
 
       // ===== cube movement =====
       double crntTime = glfwGetTime();
-      if (crntTime - prevTime >= 1 / 60 && modelRotationBool)
+      if (crntTime - prevTime >= 1.0 / 60.0) // 60 FPS aprox
       {
-        modelRotation += 0.2f;
+        if (modelRotationBool)
+        {
+          if (rotationX)
+            modelRotationX += 1.0f;
+          if (rotationY)
+            modelRotationY += 1.0f;
+          if (rotationZ)
+            modelRotationZ += 1.0f;
+        }
         prevTime = crntTime;
       }
 
       //! this is not a good way of rendering a lot of things, what you what to do is batch rendering in a single draw call
       {
         model = glm::translate(glm::mat4(1.0f), modelTranslation);
-        if (rotationX)
-          model = glm::rotate(model, glm::radians(modelRotation), glm::vec3(1.0f, 0.0f, 0.0f));
-        if (rotationY)
-          model = glm::rotate(model, glm::radians(modelRotation), glm::vec3(0.0f, 1.0f, 0.0f));
-        if (rotationZ)
-          model = glm::rotate(model, glm::radians(modelRotation), glm::vec3(0.0f, 0.0f, 1.0f));
+        // El orden recomendado suele ser Y -> X -> Z para evitar problemas de Gimbal Lock comunes
+        model = glm::rotate(model, glm::radians(modelRotationX), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(modelRotationY), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(modelRotationZ), glm::vec3(0.0f, 0.0f, 1.0f));
 
-        view = glm::translate(view, viewTranslation);
+        view = glm::translate(baseView, viewTranslation); // si le pones v
 
         glm::mat4 mvp = proj * view * model;
         shader.SetUniformMat4f("u_MVP", mvp);
@@ -315,38 +324,33 @@ int main()
 
       // ========================= ImGui =========================
       {
-        ImGui::SliderFloat3("Translation X, Y, Z", &modelTranslation.x, -100.0f, 100.0f);
-        ImGui::SliderFloat3("View Translation X, Y, Z", &viewTranslation.x, -2.0f, 2.0f);
-        ImGui::SliderFloat("Rotation Y", &modelRotation, 0.0f, 360.0f);
-        if (ImGui::Button("rotationX"))
-        {
-          rotationX = true;
-          rotationY = false;
-          rotationZ = false;
-        }
-        ImGui::SameLine();
-        if (ImGui::Button("rotationY"))
-        {
-          rotationX = false; // ← Cambiar a false
-          rotationY = true;  // ← Cambiar a true
-          rotationZ = false;
-        }
-        ImGui::SameLine();
-        if (ImGui::Button("rotationZ"))
-        {
-          rotationX = false;
-          rotationY = false;
-          rotationZ = true;
-        }
-        ImGui::SameLine();
+        ImGui::Begin("Controls");
+        ImGui::SliderFloat3("Model Pos", &modelTranslation.x, -200.0f, 200.0f);
+        ImGui::SliderFloat3("View Offset", &viewTranslation.x, -500.0f, 500.0f);
 
-        if (ImGui::Button("enable"))
+        ImGui::Separator();
+        ImGui::Text("Manual Rotation");
+        ImGui::SliderFloat("Rot X", &modelRotationX, -360.0f, 360.0f);
+        ImGui::SliderFloat("Rot Y", &modelRotationY, -360.0f, 360.0f);
+        ImGui::SliderFloat("Rot Z", &modelRotationZ, -360.0f, 360.0f);
+
+        ImGui::Separator();
+        ImGui::Text("Auto Rotation Settings");
+        // Usamos Checkbox en lugar de botones con continue
+        ImGui::Checkbox("Rotate X", &rotationX);
+        ImGui::SameLine();
+        ImGui::Checkbox("Rotate Y", &rotationY);
+        ImGui::SameLine();
+        ImGui::Checkbox("Rotate Z", &rotationZ);
+
+        if (ImGui::Button("Enable All"))
           modelRotationBool = true;
         ImGui::SameLine();
-        if (ImGui::Button("disable"))
+        if (ImGui::Button("Disable All"))
           modelRotationBool = false;
 
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+        ImGui::End();
       }
 
       ImGui::Render();

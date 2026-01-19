@@ -6,6 +6,9 @@ A progressive OpenGL 3.3 Core Profile learning project following the [LearnOpenG
 
 This is a structured learning repository based on the excellent LearnOpenGL tutorial by Joey de Vries. Each folder represents a complete lesson in OpenGL development. The project uses CMake to easily switch between different lessons by modifying the source files in `CMakeLists.txt`.
 
+![5.5-cube](/res/gifs/2026-01-19-19-40-45.gif)
+(**5.5-cube Demo**)
+
 ## Features
 
 - **Progressive learning structure** - organized by topics and difficulty
@@ -59,35 +62,11 @@ Most lessons include:
 - **ESC** - Exit application
 - Window resizing support (viewport adjusts automatically)
 
-Additional controls are documented within each specific lesson.
+Additional controls are shown within each specific lesson.
 
 ## Performance
 
-- VSync can be toggled via `glfwSwapInterval(0)` for unlimited FPS or `glfwSwapInterval(1)` for VSync
-- FPS counter displayed in window title (where implemented)
-
-## Common Issues
-
-**CMake can't find GLFW:**
-
-- Ensure GLFW3 is installed on your system
-- Check that `cmake/FindGLFW3.cmake` module is present
-
-**Shader compilation errors:**
-
-- Verify shader file paths are correct relative to the executable
-- Ensure you're using OpenGL 3.3+ compatible shaders
-
-**Black screen on run:**
-
-- Check that shader files exist at the specified paths
-- Verify vertex data is properly configured
-- Ensure VAO is bound before drawing
-
-**Linking errors with GLAD:**
-
-- Make sure `#include "glad/glad.h"` comes before `#include <GLFW/glfw3.h>`
-- Verify `glad.c` is included in the CMakeLists.txt `SOURCES`
+- VSync can be toggled via `glfwSwapInterval(0)` on each individual Application for unlimited FPS or `glfwSwapInterval(1)` for VSync
 
 ## Project Status
 
