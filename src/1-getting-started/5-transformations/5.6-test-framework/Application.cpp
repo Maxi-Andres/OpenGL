@@ -158,7 +158,15 @@ int main()
     float r = 1.0f;
     float increment = 0.005f;
 
-    test::TestClearColor test;
+    // ======================= test =======================
+    // here yo could select a test so that you wont need to select it every time if you are trying something specific
+    test::Test *currentTest = nullptr;
+    test::TestMenu *testMenu = new test::TestMenu(currentTest);
+    currentTest = testMenu;
+
+    testMenu->RegisterTest<test::TestClearColor>("Clear Color");
+
+    // test::TestClearColor test;
 
     while (!glfwWindowShouldClose(window))
     {
@@ -167,15 +175,26 @@ int main()
 
       updateTitle(window, "MyFirstWindow"); //* This is only for the fps
 
+      GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f)); // se podria poner en renderer.h esto
       renderer.Clear();
-
-      test.OnUpdate(0.0f);
-      test.OnRender();
 
       ImGui_ImplOpenGL3_NewFrame();
       ImGui_ImplGlfw_NewFrame();
       ImGui::NewFrame();
-      test.OnImGuiRender();
+
+      if (currentTest)
+      {
+        currentTest->OnUpdate(0.0f);
+        currentTest->OnRender();
+        ImGui::Begin("Test");
+        if (currentTest != testMenu && ImGui::Button("<-"))
+        {
+          delete currentTest;
+          currentTest = testMenu;
+        }
+        currentTest->OnImGuiRender();
+        ImGui::End();
+      }
 
       // Activate shader and set uniform
       shader.Bind(); // Get uniform location (must be done after shader program is active)
@@ -218,8 +237,12 @@ int main()
       glfwSwapBuffers(window);
       glfwPollEvents();
     }
+    delete currentTest;
+    if (currentTest != testMenu)
+      delete testMenu;
 
   } // there is no need to delete anything because of the scope
+
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();
   ImGui::DestroyContext();
