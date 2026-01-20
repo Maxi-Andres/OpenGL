@@ -348,14 +348,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\Application.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\Fps.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\IndexBuffer.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\Renderer.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\Shader.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\Texture.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\VertexArray.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.5-cube\VertexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\Application.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\Fps.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\IndexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\Renderer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\Shader.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\Texture.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\VertexArray.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\VertexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\5-transformations\5.6-test-framework\tests\TestClearColor.cpp" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\glad.c" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\include\vendor\imgui\imgui.cpp" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\include\vendor\imgui\imgui_demo.cpp" />

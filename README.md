@@ -78,6 +78,9 @@ Additional controls are shown within each specific lesson.
 - **GLFW Documentation**: [glfw.org](https://www.glfw.org/)
 - **OpenGL Reference**: [docs.gl](https://docs.gl/)
 - **GLAD Generator**: [glad.dav1d.de](https://glad.dav1d.de/)
+- **OpenGL Mathematics**: [OpenGL Mathematics](https://glm.g-truc.net/0.9.9/index.html/)
+- **ImGUI**: [ImGUI](https://github.com/ocornut/imgui)
+- **LEARN C++**: [learncpp](https://www.learncpp.com/)
 
 ## Credits
 
