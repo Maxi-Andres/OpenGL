@@ -63,7 +63,7 @@ int main()
   // Make the window's context current
   glfwMakeContextCurrent(window);
 
-  glfwSwapInterval(2); // 0 = VSync off, 1 = VSync on
+  glfwSwapInterval(0); // 0 = VSync off, 1 = VSync on
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
   // ======================= INIT GLAD =======================
