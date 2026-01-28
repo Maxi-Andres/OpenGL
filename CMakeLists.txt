@@ -13,7 +13,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(SOURCE_FILE src/1-getting-started/3-shaders/3.2-basic-shaders/3.2-interpolation.cpp)
 
 # file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/5.1-maths/*.cpp")
-file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/6-camera/6.2-optimization/*.cpp")
+# file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/6-camera/6.2-optimization/*.cpp")
+file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors/*.cpp")
 
 
 set(SOURCES

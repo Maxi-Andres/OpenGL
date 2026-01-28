@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\Application.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\Camera.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\Fps.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Fps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\IndexBuffer.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\Renderer.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\Shader.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\Texture.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\VertexArray.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\1-getting-started\6-camera\6.2-optimization\VertexBuffer.cpp">
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\glad.c">
