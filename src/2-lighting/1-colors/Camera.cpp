@@ -19,9 +19,11 @@ glm::mat4 Camera::Matrix(float FOVdeg, float nearPlane, float farPlane) //! pens
   return (projection * view);
 }
 
+glm::vec3 Camera::GetPosition() { return m_Position; }
+void Camera::SetPosition(glm::vec3 newPosition) { m_Position = newPosition; }
+
 void Camera::Inputs(GLFWwindow *window)
 {
-
   if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     m_Position += m_Speed * m_Orientation;
   if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)

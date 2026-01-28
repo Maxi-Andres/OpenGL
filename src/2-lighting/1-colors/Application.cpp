@@ -42,8 +42,8 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height)
   glViewport(0, 0, width, height);
 }
 
-const unsigned int width = 800;
-const unsigned int height = 800;
+const unsigned int width = 1000;
+const unsigned int height = 1000;
 
 int main()
 {
@@ -128,22 +128,22 @@ int main()
     // Index buffer - 6 faces, 2 triangles per face, 3 indices per triangle
     // clang-format off
     unsigned int indices[] = {
-        // BOTTOM
-        0, 1, 2,
-        0, 2, 3,
-        // TOP
+        // BOTTOM (Y = -50) - Visto desde ABAJO, necesita orden invertido
+        0, 2, 1,
+        0, 3, 2,
+        // TOP (Y = +50) - Visto desde ARRIBA
         4, 5, 6,
         4, 6, 7,
-        // FRONT
+        // FRONT (Z = +50) - Visto desde el frente
         8, 9, 10,
         8, 10, 11,
-        // BACK
+        // BACK (Z = -50) - Visto desde atrás
         12, 13, 14,
         12, 14, 15,
-        // LEFT
+        // LEFT (X = -50) - Visto desde la izquierda
         16, 17, 18,
         16, 18, 19,
-        // RIGHT
+        // RIGHT (X = +50) - Visto desde la derecha
         20, 21, 22,
         20, 22, 23
     };
@@ -167,25 +167,38 @@ int main()
 
     // clang-format off
     unsigned int lightIndices[] = {
-        0, 1, 2,
-        0, 2, 3,
-        0, 4, 7,
-        0, 7, 3,
-        3, 7, 6,
-        3, 6, 2,
-        2, 6, 5,
-        2, 5, 1,
-        1, 5, 4,
-        1, 4, 0,
+        // BOTTOM FACE (Y = -25)
+        0, 2, 1,
+        0, 3, 2,
+        // FRONT FACE (Z = +25)
+        0, 1, 5,
+        0, 5, 4,
+        // RIGHT FACE (X = +25)
+        1, 2, 6,
+        1, 6, 5,
+        // BACK FACE (Z = -25)
+        2, 3, 7,
+        2, 7, 6,
+        // LEFT FACE (X = -25)
+        3, 0, 4,
+        3, 4, 7,
+        // TOP FACE (Y = +25)
         4, 5, 6,
-        4, 6, 7,
+        4, 6, 7
     };
     // clang-format on
 
-    GLCall(glEnable(GL_BLEND));
-    GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
-    //     GLCall(glEnable(GL_DEPTH_TEST));
-    // GLCall(glEnable(GL_CULL_FACE));
+    // GLCall(glEnable(GL_BLEND));
+    // GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
+    GLCall(glEnable(GL_DEPTH_TEST)); //! this is important for depth
+    GLCall(glEnable(GL_CULL_FACE));
+
+    // FACE CULLING: No renderiza caras traseras (optimización + corrección visual)
+    GLCall(glEnable(GL_CULL_FACE));
+    GLCall(glCullFace(GL_BACK)); // Descarta las caras traseras (backfaces)
+    GLCall(glFrontFace(GL_CCW)); // Front faces = vértices en sentido counter-clockwise
+    //! the ordere of the indices matter if you use this
 
     // ======================= VAO / VBO / EBO =======================
     VertexArray va;
@@ -220,14 +233,15 @@ int main()
         glm::vec3(150.0f, 20.0f, -150.0f),
         glm::vec3(-130.0f, 100.0f, -150.0f)};
 
-    // ======================= Light =======================
+    // ======================= LIGHT SOURCE TRANSFORMATIONS =======================
     glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
-    glm::vec3 lightPosition = glm::vec3(200.0f, 300.0f, 400.0f);
     glm::mat4 lightModel = glm::mat4(1.0f);
+    glm::vec3 lightTranslation = glm::vec3(200.0f, 300.0f, 400.0f);
+
     float ambientLight = 0.4f;
 
-    lightModel = glm::translate(lightModel, lightPosition);
+    lightModel = glm::translate(lightModel, lightTranslation);
 
     // ======================= SHADER SETUP =======================
 
@@ -237,7 +251,7 @@ int main()
 
     // ======================= TEXTURE SETUP =======================
 
-    Texture texture("../../res/textures/grass_block_atlas.png"); // GL_NEAREST for it to work
+    Texture texture("../../res/textures/grass_block_atlas.png"); //! GL_NEAREST for it to work
     texture.Bind();
     // this has to match SetUniform1i (default 0)
 
@@ -252,7 +266,7 @@ int main()
 
     Renderer renderer;
 
-    // ======================= Light =======================
+    // ======================= LIGHT =======================
     Shader lightShader("../../src/2-lighting/1-colors/shaders/LightShaders.shaders");
     lightShader.Bind();
 
@@ -296,9 +310,6 @@ int main()
     bool rotationY = false;
     bool rotationZ = false;
 
-    GLCall(glEnable(GL_DEPTH_TEST));
-    //! you need to change the glClear in Renderer.cpp
-
     // ======================= RENDER LOOP =======================
 
     while (!glfwWindowShouldClose(window))
@@ -309,6 +320,7 @@ int main()
       updateTitle(window, "MyFirstWindow"); //* This is only for the fps
 
       renderer.Clear();
+      //! you need to change the glClear in Renderer.cpp
 
       ImGui_ImplOpenGL3_NewFrame();
       ImGui_ImplGlfw_NewFrame();
@@ -334,7 +346,7 @@ int main()
         prevTime = crntTime;
       }
 
-      // ===== camera movement =====
+      // ========== camera movement ==========
       camera.Inputs(window);
       glm::mat4 proj_view = camera.Matrix(90.f, 0.1f, 10000.0f);
 
@@ -354,9 +366,10 @@ int main()
         glm::mat4 mvp = proj_view * model; // column-major ordering because of OpenGl so the orther is this one and not m * v * p
         shader.SetUniformMat4f("u_MVP", mvp);
         shader.SetUniformMat4f("u_Model", model);
-        shader.SetUniform4f("u_lightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-        shader.SetUniform3f("u_lightPosition", lightPosition.x, lightPosition.y, lightPosition.z);
-        shader.SetUniform1f("u_ambientLight", ambientLight);
+        shader.SetUniform4f("u_LightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+        shader.SetUniform3f("u_LightTranslation", lightTranslation.x, lightTranslation.y, lightTranslation.z);
+        shader.SetUniform1f("u_AmbientLight", ambientLight);
+        shader.SetUniform3f("u_CameraPosition", camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
 
         renderer.Draw(va, ib, shader);
 
@@ -371,22 +384,24 @@ int main()
 
           shader.SetUniformMat4f("u_MVP", proj_view * model);
           shader.SetUniformMat4f("u_Model", model);
-          shader.SetUniform4f("u_lightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-          shader.SetUniform3f("u_lightPosition", lightPosition.x, lightPosition.y, lightPosition.z);
-          shader.SetUniform1f("u_ambientLight", ambientLight);
+          shader.SetUniform4f("u_LightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+          shader.SetUniform3f("u_LightTranslation", lightTranslation.x, lightTranslation.y, lightTranslation.z);
+          shader.SetUniform1f("u_AmbientLight", ambientLight);
+          shader.SetUniform3f("u_CameraPosition", camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
 
           renderer.Draw(va, ib, shader);
         }
       }
 
-      // ===== light source =====
-
+      // ========== light source ==========
       {
-
         lightShader.Bind();
+
+        lightModel = glm::translate(glm::mat4(1.0f), lightTranslation);
+
         glm::mat4 mvp = proj_view * lightModel;
         lightShader.SetUniformMat4f("u_MVP", mvp);
-        lightShader.SetUniform4f("u_lightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+        lightShader.SetUniform4f("u_LightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 
         renderer.Draw(lightVAO, lightIBO, lightShader);
       }
@@ -394,8 +409,8 @@ int main()
       // ========================= ImGui =========================
       {
         ImGui::Begin("Controls");
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-        ImGui::SliderFloat3("Model Pos", &modelTranslation.x, -200.0f, 200.0f);
+        ImGui::Text("Average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+        ImGui::SliderFloat3("Model Pos", &modelTranslation.x, -800.0f, 800.0f);
 
         ImGui::Separator();
         ImGui::Text("Manual Rotation");
@@ -417,6 +432,8 @@ int main()
         ImGui::SameLine();
         if (ImGui::Button("Disable All"))
           modelRotationBool = false;
+
+        ImGui::SliderFloat3("Light Pos", &lightTranslation.x, -800.0f, 800.0f);
 
         ImGui::End();
       }

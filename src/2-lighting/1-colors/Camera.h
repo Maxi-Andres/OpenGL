@@ -39,4 +39,7 @@ public:
   glm::mat4 Matrix(float FOVdeg, float nearPlane, float farPlane);
   // glm::mat4 Matrix(float FOVdeg, float nearPlane, float farPlane, Shader &shader, const char *uniform);
   void Inputs(GLFWwindow *window);
+
+  glm::vec3 GetPosition();
+  void SetPosition(glm::vec3 newPosition);
 };
