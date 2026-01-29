@@ -128,22 +128,22 @@ int main()
     // Index buffer - 6 faces, 2 triangles per face, 3 indices per triangle
     // clang-format off
     unsigned int indices[] = {
-        // BOTTOM (Y = -50) - Visto desde ABAJO, necesita orden invertido
+        // BOTTOM (Y = -50) - Viewed from BELOW, needs inverted order
         0, 2, 1,
         0, 3, 2,
-        // TOP (Y = +50) - Visto desde ARRIBA
+        // TOP (Y = +50) - Viewed from ABOVE
         4, 5, 6,
         4, 6, 7,
-        // FRONT (Z = +50) - Visto desde el frente
+        // FRONT (Z = +50) - Viewed from the front
         8, 9, 10,
         8, 10, 11,
-        // BACK (Z = -50) - Visto desde atrás
+        // BACK (Z = -50) - Viewed from behind
         12, 13, 14,
         12, 14, 15,
-        // LEFT (X = -50) - Visto desde la izquierda
+        // LEFT (X = -50) - Viewed from the left
         16, 17, 18,
         16, 18, 19,
-        // RIGHT (X = +50) - Visto desde la derecha
+        // RIGHT (X = +50) - Viewed from the right
         20, 21, 22,
         20, 22, 23
     };
@@ -152,37 +152,37 @@ int main()
     // clang-format off
     float lightVertices[] = {
         // BOTTOM FACE - 4 vertices
-        -25.0f, -25.0f,  25.0f,  
-        25.0f, -25.0f,  25.0f, 
-        25.0f, -25.0f, -25.0f, 
-        -25.0f, -25.0f, -25.0f,  
+        -20.0f, -20.0f,  20.0f,  
+        20.0f, -20.0f,  20.0f, 
+        20.0f, -20.0f, -20.0f, 
+        -20.0f, -20.0f, -20.0f,  
         
         // TOP FACE - 4 vertices
-        -25.0f,  25.0f,  25.0f, 
-        25.0f,  25.0f,  25.0f,  
-        25.0f,  25.0f, -25.0f, 
-        -25.0f,  25.0f, -25.0f,  
+        -20.0f,  20.0f,  20.0f, 
+        20.0f,  20.0f,  20.0f,  
+        20.0f,  20.0f, -20.0f, 
+        -20.0f,  20.0f, -20.0f,  
     };
     // clang-format on
 
     // clang-format off
     unsigned int lightIndices[] = {
-        // BOTTOM FACE (Y = -25)
+        // BOTTOM FACE (Y = -20)
         0, 2, 1,
         0, 3, 2,
-        // FRONT FACE (Z = +25)
+        // FRONT FACE (Z = +20)
         0, 1, 5,
         0, 5, 4,
-        // RIGHT FACE (X = +25)
+        // RIGHT FACE (X = +20)
         1, 2, 6,
         1, 6, 5,
-        // BACK FACE (Z = -25)
+        // BACK FACE (Z = -20)
         2, 3, 7,
         2, 7, 6,
-        // LEFT FACE (X = -25)
+        // LEFT FACE (X = -20)
         3, 0, 4,
         3, 4, 7,
-        // TOP FACE (Y = +25)
+        // TOP FACE (Y = +20)
         4, 5, 6,
         4, 6, 7
     };
@@ -194,11 +194,11 @@ int main()
     GLCall(glEnable(GL_DEPTH_TEST)); //! this is important for depth
     GLCall(glEnable(GL_CULL_FACE));
 
-    // FACE CULLING: No renderiza caras traseras (optimización + corrección visual)
+    // FACE CULLING: Doesn't render back faces (optimization + visual correction)
     GLCall(glEnable(GL_CULL_FACE));
-    GLCall(glCullFace(GL_BACK)); // Descarta las caras traseras (backfaces)
-    GLCall(glFrontFace(GL_CCW)); // Front faces = vértices en sentido counter-clockwise
-    //! the ordere of the indices matter if you use this
+    GLCall(glCullFace(GL_BACK)); // Discards back faces (backfaces)
+    GLCall(glFrontFace(GL_CCW)); // Front faces = vertices in counter-clockwise order
+    //! the order of the indices matter if you use this
 
     // ======================= VAO / VBO / EBO =======================
     VertexArray va;
@@ -298,12 +298,10 @@ int main()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;  // Enable Gamepad Controls
 
-    // ======================= VARIABES FOR LOOP =======================
+    // ======================= VARIABLES FOR LOOP =======================
 
     bool modelRotationBool = false;
-    float modelRotationX = 0.0f;
-    float modelRotationY = 0.0f;
-    float modelRotationZ = 0.0f;
+    glm::vec3 modelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
 
     double prevTime = glfwGetTime();
     bool rotationX = false;
@@ -332,16 +330,16 @@ int main()
 
       // ===== cube movement =====
       double crntTime = glfwGetTime();
-      if (crntTime - prevTime >= 1.0 / 60.0) // 60 FPS aprox
+      if (crntTime - prevTime >= 1.0 / 60.0) // 60 FPS approx
       {
         if (modelRotationBool)
         {
           if (rotationX)
-            modelRotationX += 1.0f;
+            modelRotation.x += 1.0f;
           if (rotationY)
-            modelRotationY += 1.0f;
+            modelRotation.y += 1.0f;
           if (rotationZ)
-            modelRotationZ += 1.0f;
+            modelRotation.z += 1.0f;
         }
         prevTime = crntTime;
       }
@@ -350,20 +348,21 @@ int main()
       camera.Inputs(window);
       glm::mat4 proj_view = camera.Matrix(90.f, 0.1f, 10000.0f);
 
-      //! this is not a good way of rendering a lot of things, what you what to do is batch rendering in a single draw call, calling multiple times drawing is bad!
+      //! this is not a good way of rendering a lot of things, what you want to do is batch rendering in a single draw call, calling multiple times drawing is bad!
       {
-        // asi no calculo radiants en el loop
-        float radX = glm::radians(modelRotationX);
-        float radY = glm::radians(modelRotationY);
-        float radZ = glm::radians(modelRotationZ);
+        // this way I don't calculate radians in the loop
+        float radX = glm::radians(modelRotation.x);
+        float radY = glm::radians(modelRotation.y);
+        float radZ = glm::radians(modelRotation.z);
 
+        //? remember that these matrix calculations are read from right to left, meaning also from bottom to top, look where the variables are within the formula
         model = glm::translate(glm::mat4(1.0f), modelTranslation);
-        // El orden recomendado suele ser Y -> X -> Z para evitar problemas de Gimbal Lock comunes
+        // The recommended order is usually Y -> X -> Z to avoid common Gimbal Lock problems
         model = glm::rotate(model, radY, glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::rotate(model, radX, glm::vec3(1.0f, 0.0f, 0.0f));
         model = glm::rotate(model, radZ, glm::vec3(0.0f, 0.0f, 1.0f));
 
-        glm::mat4 mvp = proj_view * model; // column-major ordering because of OpenGl so the orther is this one and not m * v * p
+        glm::mat4 mvp = proj_view * model; // column-major ordering because of OpenGL so the order is this one and not m * v * p
         shader.SetUniformMat4f("u_MVP", mvp);
         shader.SetUniformMat4f("u_Model", model);
         shader.SetUniform4f("u_LightColor", lightColor.x, lightColor.y, lightColor.z, lightColor.w);
@@ -408,32 +407,51 @@ int main()
 
       // ========================= ImGui =========================
       {
-        ImGui::Begin("Controls");
-        ImGui::Text("Average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-        ImGui::SliderFloat3("Model Pos", &modelTranslation.x, -800.0f, 800.0f);
+        ImGui::Begin("Renderer Controls", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+
+        // 1. Stats
+        ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "Performance");
+        ImGui::Text("Avg: %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 
         ImGui::Separator();
-        ImGui::Text("Manual Rotation");
-        ImGui::SliderFloat("Rot X", &modelRotationX, -360.0f, 360.0f);
-        ImGui::SliderFloat("Rot Y", &modelRotationY, -360.0f, 360.0f);
-        ImGui::SliderFloat("Rot Z", &modelRotationZ, -360.0f, 360.0f);
 
-        ImGui::Separator();
-        ImGui::Text("Auto Rotation Settings");
-        // Usamos Checkbox en lugar de botones con continue
-        ImGui::Checkbox("Rotate X", &rotationX);
-        ImGui::SameLine();
-        ImGui::Checkbox("Rotate Y", &rotationY);
-        ImGui::SameLine();
-        ImGui::Checkbox("Rotate Z", &rotationZ);
+        // 2. Model
+        if (ImGui::CollapsingHeader("Model Settings"))
+        {
+          ImGui::Text("Main Cube");
+          ImGui::DragFloat3("Position", &modelTranslation.x, 1.0f, -1000.0f, 1000.0f); // slider is very sensitive, dragfloat is more easy to use
 
-        if (ImGui::Button("Enable All"))
-          modelRotationBool = true;
-        ImGui::SameLine();
-        if (ImGui::Button("Disable All"))
-          modelRotationBool = false;
+          ImGui::Dummy(ImVec2(0.0f, 5.0f)); // small space
+          ImGui::Text("Manual Rotation");
+          ImGui::DragFloat3("Models Rotation", &modelRotation.x, 1.0f, -1000.0f, 1000.0f);
+        }
 
-        ImGui::SliderFloat3("Light Pos", &lightTranslation.x, -800.0f, 800.0f);
+        // 3. Auto Rotation Section
+        if (ImGui::CollapsingHeader("Auto Rotation"))
+        {
+          ImGui::Text("Active Axes:");
+          ImGui::Checkbox("X##rot", &rotationX);
+          ImGui::SameLine();
+          ImGui::Checkbox("Y##rot", &rotationY);
+          ImGui::SameLine();
+          ImGui::Checkbox("Z##rot", &rotationZ);
+
+          float buttonWidth = ImGui::GetContentRegionAvail().x * 0.5f - 5.0f;
+          if (ImGui::Button("Enable All", ImVec2(buttonWidth, 0)))
+            modelRotationBool = true;
+          ImGui::SameLine();
+          if (ImGui::Button("Disable All", ImVec2(buttonWidth, 0)))
+            modelRotationBool = false;
+        }
+
+        // 4. Light & Environment Section
+        if (ImGui::CollapsingHeader("Light & Environment", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+          ImGui::DragFloat3("Light Position", &lightTranslation.x, 1.0f, -1000.0f, 1000.0f);
+          ImGui::ColorEdit4("Light Color", &lightColor.x);
+
+          ImGui::SliderFloat("Ambient Intensity", &ambientLight, 0.0f, 1.0f);
+        }
 
         ImGui::End();
       }
