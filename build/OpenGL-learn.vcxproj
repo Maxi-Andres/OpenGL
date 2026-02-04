@@ -348,15 +348,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Application.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Camera.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Fps.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\IndexBuffer.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Renderer.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Shader.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\Texture.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\VertexArray.cpp" />
-    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors\VertexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\Application.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\Camera.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\Fps.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\IndexBuffer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\Renderer.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\Shader.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\Texture.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\VertexArray.cpp" />
+    <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\2-lighting\1-colors-and-2-basic-lighting\1.1-crazy-sun\VertexBuffer.cpp" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\src\glad.c" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\include\vendor\imgui\imgui.cpp" />
     <ClCompile Include="C:\Users\Max\Desktop\Universidad\ProyectosProgramacion\OpenGL\ProjectOpenGLBasics\include\vendor\imgui\imgui_demo.cpp" />

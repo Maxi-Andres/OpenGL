@@ -14,7 +14,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/5.1-maths/*.cpp")
 # file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/6-camera/6.2-optimization/*.cpp")
-file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors/*.cpp")
+file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors-and-2-basic-lighting/1.1-crazy-sun/*.cpp")
+# file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors-and-2-basic-lighting/1.2-orbiting-cubes/*.cpp")
 
 
 set(SOURCES
