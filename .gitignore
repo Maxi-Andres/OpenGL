@@ -1,0 +1,15 @@
+# Build folders
+build/
+Debug/
+Release/
+
+# Visual Studio
+*.pdb
+*.obj
+*.ilk
+*.exe
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
