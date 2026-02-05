@@ -1,0 +1,85 @@
+#shader vertex
+#version 330 core
+
+// --- Inputs from the vertex buffer ---
+layout (location = 0) in vec3 a_Position;
+layout (location = 1) in vec3 a_Color;
+layout (location = 2) in vec2 a_TexCoord;
+layout (location = 3) in vec3 a_Normal;
+
+// --- Outputs to the fragment shader ---
+out vec3 v_Color;
+out vec2 v_TexCoord;
+out vec3 v_Normal;
+out vec3 v_CrntPosition;
+
+// --- Uniforms ---
+uniform float u_Scale;
+uniform mat4 u_MVP; // Model View Proyection matrix
+uniform mat4 u_Model; // We need Model also...
+
+void main()
+{
+  // Transform position to world space for lighting calculations
+  v_CrntPosition = vec3(u_Model * vec4(a_Position * u_Scale, 1.0f));
+  
+  // Transform normals to world space (correct for non-uniform scaling/rotation)
+  v_Normal = mat3(transpose(inverse(u_Model))) * a_Normal;
+  
+  // Transform position to clip space for rendering
+  gl_Position = u_MVP * vec4(a_Position * u_Scale, 1.0);
+  
+  // Pass through color and texture coordinates
+  v_Color = a_Color;
+  v_TexCoord = a_TexCoord;
+};
+
+
+// =======================================================================
+
+
+#shader fragment
+#version 330 core
+
+layout(location = 0) out vec4 o_FragColor;
+
+// --- Inputs from vertex shader ---
+in vec2 v_TexCoord;
+in vec3 v_Color;
+in vec3 v_Normal;
+in vec3 v_CrntPosition;
+
+// --- Uniforms ---
+uniform sampler2D u_Texture;
+uniform vec4 u_LightColor; 
+uniform vec3 u_LightTranslation;
+uniform float u_AmbientLight;
+uniform vec3 u_CameraPosition;
+
+void main()
+{
+  // o_FragColor = vec4(v_Color, 1.0);
+  // o_FragColor = texture(u_Texture, v_TexCoord);
+  // o_FragColor = texture(u_Texture, v_TexCoord) * vec4(v_Color, 1.0);
+
+  // Normalize vectors for lighting calculations
+  vec3 f_Normal = normalize(v_Normal);
+  vec3 f_LightDirection = normalize(u_LightTranslation - v_CrntPosition);
+
+  // Diffuse lighting: how much surface faces the light (0.0 to 1.0)
+  float f_Diffuse = max(dot(f_Normal, f_LightDirection), 0.0f);
+
+  // Specular lighting: shiny highlights
+  float f_SpecularLight = 0.5f; // Specular intensity
+  vec3 f_ViewDirection = normalize(u_CameraPosition - v_CrntPosition);
+  vec3 f_ReflectionDirection = reflect(-f_LightDirection, f_Normal);
+
+  // Calculate specular highlight (pow creates the shiny spot effect)
+  float f_SpecAmount = pow(max(dot(f_ViewDirection, f_ReflectionDirection), 0.0), 256);
+  float f_Specular = f_SpecAmount * f_SpecularLight;
+
+  // Combine all lighting: texture * light color * (diffuse + ambient + specular)
+  o_FragColor = texture(u_Texture, v_TexCoord) * u_LightColor * (f_Diffuse + u_AmbientLight + f_Specular);
+
+  // o_FragColor = vec4(f_Normal * 0.5 + 0.5, 1.0); // Convierte normales a colores
+};

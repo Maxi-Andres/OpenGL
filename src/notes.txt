@@ -1,1 +1,4 @@
 f5 to debugg....
+
+agregar al .bat una manera de cambiarlos archivos que estas corriendo sin cambiar el cmake
+hacer que el .bat te descargue todas las cosas que no tengas
