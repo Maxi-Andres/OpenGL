@@ -41,6 +41,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors-and-2-basic-lighting/1.1-crazy-sun/*.cpp")
 # file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors-and-2-basic-lighting/1.2-orbiting-cubes/*.cpp")
+# file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/3-lighting-maps/6.1-specular-maps/*.cpp")
+
 
 # ============================================
 # ACTIVE LESSON CONFIGURATION
