@@ -1,5 +1,4 @@
 @echo off
-echo [DEBUG] Script starting...
 setlocal enabledelayedexpansion
 title OpenGL Lesson Manager
 
@@ -7,7 +6,20 @@ title OpenGL Lesson Manager
 set "ROOT_DIR=%~dp0"
 set "CONFIG_FILE=%ROOT_DIR%active_lesson.cmake"
 set "MODE=Debug"
-set "SELECTION=1"
+set "SELECTION=22"
+
+:: --- FIND CMAKE (PATH, or the default install folder right after install.bat) ---
+set "CMAKE=cmake"
+where cmake >nul 2>&1
+if errorlevel 1 (
+    if exist "%ProgramFiles%\CMake\bin\cmake.exe" (
+        set "CMAKE=%ProgramFiles%\CMake\bin\cmake.exe"
+    ) else (
+        echo [ERROR] CMake was not found. Run install.bat first.
+        pause
+        exit /b 1
+    )
+)
 
 :MENU
 cd /d "%ROOT_DIR%"
@@ -25,7 +37,7 @@ echo   7]  Basic Shaders (3.2)       18] Camera Class
 echo   8]  Interpolation (3.3)       19] Camera Optimization
 echo   9]  Abstracting (3.5)         20] Crazy Sun (Light)
 echo   10] Textures                  21] Orbiting Cubes
-echo   11] Maths
+echo   11] Maths                     22] Specular Maps
 echo ------------------------------------------------------------
 echo   CURRENT SELECTION: [%SELECTION%]
 echo   [M] Toggle Mode  [R] Clean Build  [X] Exit
@@ -77,17 +89,18 @@ if "%SELECTION%"=="18" set "CMD=file(GLOB_RECURSE SOURCE_FILE "src/1-getting-sta
 if "%SELECTION%"=="19" set "CMD=file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/6-camera/6.2-optimization/*.cpp")"
 if "%SELECTION%"=="20" set "CMD=file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors-and-2-basic-lighting/1.1-crazy-sun/*.cpp")"
 if "%SELECTION%"=="21" set "CMD=file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/1-colors-and-2-basic-lighting/1.2-orbiting-cubes/*.cpp")"
+if "%SELECTION%"=="22" set "CMD=file(GLOB_RECURSE SOURCE_FILE "src/2-lighting/3-lighting-maps/6.1-specular-maps/*.cpp")"
 
 :: Write to file
 echo # Generated file > "%CONFIG_FILE%"
 echo %CMD% >> "%CONFIG_FILE%"
 
 echo [1/3] Configuring CMake...
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+"%CMAKE%" -S . -B build -A x64
 if %errorlevel% neq 0 pause & goto MENU
 
 echo [2/3] Building in %MODE%...
-cmake --build build --config %MODE%
+"%CMAKE%" --build build --config %MODE%
 if %errorlevel% neq 0 pause & goto MENU
 
 echo [3/3] Running Application...

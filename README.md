@@ -4,7 +4,7 @@ A progressive OpenGL 3.3 Core Profile learning project following the [LearnOpenG
 
 ## Overview
 
-This is a structured learning repository based on the excellent LearnOpenGL tutorial by Joey de Vries. Each folder represents a complete lesson in OpenGL development. The project uses CMake to easily switch between different lessons by modifying the source files in `CMakeLists.txt`.
+This is a structured learning repository based on the excellent LearnOpenGL tutorial by Joey de Vries. Each folder represents a complete lesson in OpenGL development. A small menu (`run.bat`) lets you pick any lesson, then builds and runs it.
 
 ![5.5-cube](/res/gifs/2026-01-19-19-40-45.gif)
 (**5.5-cube Demo**)
@@ -15,41 +15,35 @@ This is a structured learning repository based on the excellent LearnOpenGL tuto
 - **OpenGL 3.3 Core Profile** - modern OpenGL practices
 - **Based on [LearnOpenGL.com](https://learnopengl.com)** - industry-standard learning resource
 - **Modular architecture** - each lesson is self-contained
-- **Easy lesson switching** - configure via CMakeLists.txt
+- **Easy lesson switching** - pick a lesson from the `run.bat` menu
 - **Work in progress** - continuously adding new lessons and concepts
 
-## Prerequisites
+## Quick Start (Windows)
 
-- CMake 3.22 or higher
-- C++11 compatible compiler
-- OpenGL 3.3+ compatible graphics driver
-- GLFW3 library
-- GLAD (included in project)
+1. Double-click **`install.bat`**. It installs CMake and the Visual Studio 2022 C++ Build Tools with `winget`, and skips anything you already have.
+2. Double-click **`run.bat`**, pick a lesson from the menu and press **Enter**. It configures CMake, builds the lesson and launches it from the right working directory so shaders and textures load.
 
-## Building the Project
+Menu options: **M** toggles Debug/Release, **R** cleans the build, **X** exits.
 
-### Select Your Lesson
+GLFW, GLAD, GLM, ImGui and stb_image are already included in the repo, so there's nothing else to download. You only need a graphics driver that supports OpenGL 3.3 or newer.
 
-Edit `CMakeLists.txt` and set the `SOURCE_FILE` variable to the lesson you want to run:
+## Building Manually
+
+Requirements: CMake 3.22+, a C++11 compiler (MSVC on Windows, since the bundled `glfw3.lib` is built for it) and an OpenGL 3.3+ driver.
+
+Set the lesson in `active_lesson.cmake`, for example:
 
 ```cmake
-# Example: Single-file lesson
-set(SOURCE_FILE
-  src/1-getting-started/2.1-hello-triangle.cpp)
-
-# Example: Multi-file lesson with abstractions
-file(GLOB SOURCE_FILE "src/1-getting-started/3.5-abstracting/*.cpp")
+file(GLOB_RECURSE SOURCE_FILE "src/1-getting-started/5-transformations/5.5-cube/*.cpp")
 ```
 
-### Run Program (Windows)
+Then build and run from `build/Debug`, because lessons load their shaders with paths relative to it:
 
-To quickly compile and run the selected lesson without opening an IDE:
-
-- Save your changes in CMakeLists.txt.
-
-- Double-click compile_and_run.bat in the root folder.
-
-The script will automatically configure the project, build the latest code, and launch the executable using the correct working directory to ensure Shaders load properly.
+```bat
+cmake -S . -B build -A x64
+cmake --build build --config Debug
+cd build\Debug && OpenGL-learn.exe
+```
 
 ### Run Program (Linux)
 
